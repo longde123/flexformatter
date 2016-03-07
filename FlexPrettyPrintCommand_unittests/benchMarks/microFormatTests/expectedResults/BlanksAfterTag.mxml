@@ -1,0 +1,51 @@
+<mx:Application id="2">
+
+	<mx:Button/>
+	<mx:add>
+	</mx:add>
+	<mx:Button>
+
+		<mx:Metadata>
+			abc
+			def
+		</mx:Metadata>
+		<mx:Metadata>
+			yzz
+		</mx:Metadata>
+	</mx:Button>
+	<mx:Button/>
+	<a>
+
+		<b>
+
+			<c>
+
+				<d/>
+				<e/>
+				<f/>
+			</c>
+		</b>
+		<b>
+
+			<c>
+
+				<d/>
+				<e/>
+				<f/>
+			</c>
+		</b>
+	</a>
+	<a>
+
+		<b>
+
+			<c>
+
+				<d/>
+				<e/>
+				<f/>
+			</c>
+		</b>
+	</a>
+
+</mx:Application>

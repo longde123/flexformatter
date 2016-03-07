@@ -1,0 +1,50 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<h1>Attribute Order Dialog</h1>
+	This dialog lets you reorder mxml attributes during a Format.
+	<h2>Don't use custom attribute order and line breaks</h2>
+	If this box is checked, don't change the order of attributes or use any custom line wrapping configuration.
+	<h2>Order of attributes</h2>
+	In this table, add the attribute names that you want to see in a particular order.   Many people would want to add 'id', 
+	perhaps others.  Each row in the table is a group of attributes.  It could be a single attribute, or it could be a 
+	comma-separated list of attributes with a newline at the end.  The second case would mean that all the attributes in 
+	the set (that exist) should appear in the given order in any tag, and a newline should be inserted after the last existing 
+	attribute, so that following attributes will start on a new line.  No newline will be added if none of the attributes 
+	exist.   Creating a group with only linebreaks (no attributes) means that the linebreaks will always be added (unless 
+	there are no attributes in the tag).  It makes most sense to include a linebreak in each attribute group (if you want one).  
+	A linebreak can also be included in its own group (as the first group in the list) to insert a newline before the first 
+	attribute in any tag.  Extra line breaks beyond the last attribute in a tag will be trimmed.  
+	<h3>Operations</h3>
+	<h4>Delete</h4>
+	Remove the currently selected row from the table
+	<h4>Move up/down</h4>
+	Use these buttons to reorder rows in the table.
+	<h4>Add line break</h4>
+	Adds a line break to the current row in the edit field 
+	<h4>Add attr group</h4> 
+	Add a reference to a group (a list of attributes) to the current row in the edit field.  The available groups are listed
+	in the combo box beside the button.  Use the <b>Edit groups...</b> button to add/edit/delete groups of attributes.
+	<h4>Add</h4>
+	Add the current row definition to the table.  This will be disabled if any element in the row already exists in the table.
+	</h4>Update</h4>
+	Modify the currently selected row definition in the table with the contents of the edit field.  This button will be disabled
+	if there is no row selected or if the contents of the edit field intersect the contents of another table row.
+	<h3>Simple Examples</h3>
+	<ul>
+	<li>id, \n<br>
+		The id attribute will always be listed first, if present, and subsequent attributes will start on a new line</li>
+	<li>id, \n on first line, x,y on second line<br>
+		The id attribute  will always be listed first, if present.  The second line will contain x and y, if they exist.  
+		Further attributes will appear on the same line with x and y, persuant to the wrapping options set on the main 
+		MXML preference page.
+	</ul>
+	<h2>Sort remaining attrs</h2>
+	If this box is checked, all left-over attributes (that are not referenced in the table above) will be sorted in ascending
+	alphabetical order.
+	<h2>Add newline before tag close</h2>
+	If this box is checked, the end symbol for the tag (> or />) will be moved to the next line.  Otherwise, it will appear
+	immediately after the last attribute in the tag.  This option is the only way to have a line break after the last attribute
+	in a tag.
+</head>
+</html>

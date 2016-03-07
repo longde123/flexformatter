@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+					 layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			import com.insomnia.festival.event.NavEvent;
+			import mx.events.FlexEvent;
+			var i:int=2;
+			var z:boolean=false;
+
+			//----------------------------------------------------------
+			//
+			//
+			//   Function 
+			//
+			//
+			//----------------------------------------------------------
+			public function z():void
+			{
+				if (x < 2 &&
+					z > 3)
+				{
+					m--;
+				}
+			}
+
+			//comment location
+			private function x():void
+			{
+				if (x > 2)
+					y++;
+			}
+		]]>
+	</mx:Script>
+	<!--asldkfjsadlfkj-->
+	<a>
+	</a>
+</mx:Application>

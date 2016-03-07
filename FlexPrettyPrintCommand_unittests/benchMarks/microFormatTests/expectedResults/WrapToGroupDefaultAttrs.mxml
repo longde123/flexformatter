@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application layout="absolute" xmlns:mx="http://www.adobe.com/2006/mxml    f"
+					 creationComplete="init('there is a value to send to the init')">
+	<mx:VBox height="100%" width="100%"/>
+	<mx:VBox id1="a"
+				height="100%" width="100%"/>
+	<mx:VBox id1="a" id2="b"
+				height="100%" width="100%"/>
+	<mx:VBox id1="a" id2="b"
+				id3="c" id4="d"
+				id5="e"
+				height="100%" width="100%"/>
+	<mx:VBox id1="a" id2="b"
+				id3="c" id4="d"/>
+	<mx:VBox id1="a" id2="b"
+				id3="c" id4="d"
+				height="100%" width1="100%"
+				width2="100%" width3="100%"
+				width4="100%"/>
+	<mx:Empty/>
+</mx:Application>

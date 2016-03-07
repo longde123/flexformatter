@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application layout="absolute" xmlns:mx="http://www.adobe.com/2006/mxml    f"
+	creationComplete="init('there is a value to send to the init')">
+	<mx:VBox height="100%" width="100%">
+		<mx:Button enabled="false" id="sendMainAppEventButton"
+			label="Send Main App Event" click="sendMainAppEvent(new Event('MAIN_APP_CLICK'))"
+			a="2"/>
+		<mx:TextArea height="100%" id="textArea"
+			width="100%"/>
+		<mx:HBox height="100%" width="100%">
+			<mx:SWFLoader height="100%" id="appLoader1"
+				width="100%"/>
+			<mx:SWFLoader height="100%" id="appLoader2"
+				width="100%"/>
+		</mx:HBox>
+	</mx:VBox>
+	<mx:Empty/>
+</mx:Application>

@@ -1,0 +1,235 @@
+/** XML parser by Oliver Zeigermann October 10, 2005; posted to Antlr examples */
+lexer grammar MXMLLexer;
+
+tokens
+{
+   EMPTY_TAG_OPEN;
+}
+
+@lexer::header{
+package flexprettyprint.handlers;
+}
+
+@lexer::members
+{
+   private List<CommonToken> mRawTokens=new ArrayList<CommonToken>();
+   int lastLine=1;
+   int lastCharPos=0;
+   public void addToken(Token t, int type, int channel)
+   {
+   		((CommonToken)t).setType(type);
+   		((CommonToken)t).setChannel(channel);
+   		t.setLine(lastLine);
+   		lastLine=input.getLine();
+   		t.setCharPositionInLine(lastCharPos);
+   		lastCharPos=input.getCharPositionInLine();
+   		mRawTokens.add((CommonToken)t);
+   }
+   public List<CommonToken> getTokens()
+   {
+   		return mRawTokens;
+   }
+   
+public void reset()
+{
+	super.reset(); // reset all recognizer state variables
+	if (input instanceof ANTLRStringStream)
+	{
+		((ANTLRStringStream)input).reset();
+	}
+}
+
+   
+}
+
+
+
+
+DOCUMENT
+      :
+      ( XMLDECL | DOCTYPE | ELEMENT | COMMENT | WS)*
+//    :  XMLDECL? WS? DOCTYPE? WS? ELEMENT WS? 
+    ;
+
+fragment DOCTYPE
+    :
+        dt=DOCTYPE_tag {addToken($dt, DOCTYPE_tag, 0);} WS rootElementName=GENERIC_ID 
+        { System.out.println("ROOTELEMENT: "+rootElementName.getText()); }   
+        WS
+        ( 
+            ( sys=SYSTEM_tag {addToken($sys, SYSTEM_tag, 0);} WS sys1=VALUE
+                { System.out.println("SYSTEM: "+sys1.getText()); }   
+                
+            | pub=PUBLIC_tag {addToken($pub, PUBLIC_tag, 0);} WS pub=VALUE WS sys2=VALUE
+                { System.out.println("PUBLIC: "+pub.getText()); }   
+                { System.out.println("SYSTEM: "+sys2.getText()); }   
+            )
+            ( WS )?
+        )?
+        ( dtd=INTERNAL_DTD
+            { System.out.println("INTERNAL DTD: "+dtd.getText()); }   
+        )?
+		close=TAG_CLOSE {addToken($close, TAG_CLOSE, 0);}
+	;
+	
+	
+fragment SYSTEM_tag
+	: 'SYSTEM' ;
+	
+fragment PUBLIC_tag
+	: 'PUBLIC' ;
+	
+fragment DOCTYPE_tag
+	: '<!DOCTYPE';
+
+fragment INTERNAL_DTD : '[' (options {greedy=false;} : .)* ']' ;
+
+fragment PI :
+        ds=DECL_START target=GENERIC_ID WS? 
+          { System.out.println("PI: "+target.getText()); }
+        ( ATTRIBUTE WS? )*  de=DECL_STOP {addToken($de, DECL_STOP, 0);}
+	;
+
+fragment XMLDECL :
+        ds=DECL_START {addToken($ds, DECL_START, 0);} xml=XML {addToken($xml, XML, 0);} WS? 
+          { System.out.println("XML declaration"); }
+        ( ATTRIBUTE WS? )*  de=DECL_STOP {addToken($de, DECL_STOP, 0);}
+	;
+
+fragment XML
+	: ('x'|'X') ('m'|'M') ('l'|'L') ;
+fragment DECL_START
+		: '<?'
+		;
+
+fragment DECL_STOP
+		: '?>'
+		;
+		
+fragment ELEMENT
+    : ( START_TAG
+            (ELEMENT
+            | EOL
+            | t=PCDATA
+                { addToken($t, PCDATA, 0); System.out.println("PCDATA: \""+$t.getText()+"\""); }
+            | t=CDATA
+                { addToken($t, CDATA, 0); System.out.println("CDATA: \""+$t.getText()+"\""); }
+            | t=COMMENT
+                {System.out.println("Comment: \""+$t.getText()+"\""); }
+            | pi=PI
+            )*
+            END_TAG
+        | EMPTY_ELEMENT
+        )
+    ;
+
+fragment START_TAG 
+    : open=TAG_OPEN {addToken($open, TAG_OPEN, 0);} WS? name=GENERIC_ID WS?
+          { System.out.println("Start Tag: "+name.getText()); }
+        ( ATTRIBUTE WS? )* close=TAG_CLOSE {addToken($close, TAG_CLOSE, 0);}
+    ;
+
+fragment EMPTY_ELEMENT 
+    : open=TAG_OPEN {addToken($open, EMPTY_TAG_OPEN, 0);} WS? name=GENERIC_ID WS?
+          { System.out.println("Empty Element: "+name.getText()); }
+        ( ATTRIBUTE WS? )* close=EMPTYTAG_CLOSE {addToken($close, EMPTYTAG_CLOSE, 0);}
+    ;
+    
+fragment EMPTYTAG_CLOSE
+	: '/>'
+	;
+	    
+fragment TAG_OPEN
+	: '<' 
+	;
+
+fragment EQ
+	:
+	eq=EQ_int {addToken($eq, EQ, 0);}
+	;
+	
+fragment EQ_int
+	:
+	'=' 
+	;
+	
+fragment ATTRIBUTE 
+    : name=GENERIC_ID WS? EQ WS? value=VALUE 
+        { System.out.println("Attr: "+name.getText()+"="+value.getText()); }
+    ;
+
+fragment END_TAG_OPEN:
+	'</';
+	
+fragment TAG_CLOSE
+	 : '>' ;
+	
+fragment END_TAG 
+    : open=END_TAG_OPEN {addToken($open, END_TAG_OPEN, 0);} WS? name=GENERIC_ID WS? close=TAG_CLOSE {addToken($close, TAG_CLOSE, 0);}
+        { System.out.println("End Tag: "+name.getText()); }
+    ;
+
+fragment COMMENT:
+	c=COMMENT_int {addToken($c, COMMENT, 0);}
+	;
+fragment COMMENT_int
+	:	'<!--' (options {greedy=false;} : .)* '-->'
+	;
+
+fragment CDATA
+	:	'<![CDATA[' (options {greedy=false;} : .)* ']]>'
+	;
+
+fragment PCDATA 
+		: 
+			~('<' | '\n' | '\r')+
+		; 
+
+fragment VALUE :
+		v=VALUE_int {addToken($v, VALUE, 0);}
+		;
+		
+fragment VALUE_int : 
+        ( '\"' (~'\"')* '\"'
+        | '\'' (~'\'')* '\''
+        )
+	;
+	
+fragment GENERIC_ID
+	:
+	id=GENERIC_ID_int {addToken($id, GENERIC_ID, 0);}
+	;
+
+fragment GENERIC_ID_int 
+    : ( LETTER | '_' | ':') 
+        ( options {greedy=true;} : LETTER | '0'..'9' | '.' | '-' | '_' | ':' )*
+	;
+
+fragment LETTER
+	: 'a'..'z' 
+	| 'A'..'Z'
+	;
+
+fragment WS  :
+        (ws=OTHERWS {addToken($ws, WS, 0);} 
+        | EOL 
+        )+ 
+//        (   ' '
+//        |   '\t'
+//        |  ( '\n'
+//            |	'\r\n'
+//            |	'\r'
+//            )
+//        )+
+    ;    
+    
+fragment OTHERWS:
+          (' ' | '\t')
+          ;
+
+fragment EOL :
+         ws=EOL_HELPER {addToken($ws, EOL, 0);} 
+         ;
+
+fragment EOL_HELPER
+		: ('\n' | '\r\n' | '\r');

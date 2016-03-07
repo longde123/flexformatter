@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+					 layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import com.insomnia.festival.event.NavEvent;
+
+			//comment location
+			private function x(){}
+			public function y(){}
+
+			var i:int=2;
+			var z:boolean=false;
+			if (x > 2)
+			{
+				y++;
+			}
+		]]>
+	</mx:Script>
+	<!--asldkfjsadlfkj-->
+	<a>
+	</a>
+</mx:Application>

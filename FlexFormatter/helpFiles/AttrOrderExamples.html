@@ -1,0 +1,87 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<h1>Attribute order examples</h1>
+This document gives some examples of configuring the order of mxml attributes
+Here are the general rules:
+<ul>
+<li>You can list attributes individually, or defined groups. These settings apply to all tags, so you'll need to factor that in.</li>
+<li>You can add line breaks before or after a set of attributes; if any of the attributes in the set exist, then all of the line breaks in that set will take effect. So it probably only makes sense to add line breaks at the beginning and/or end of a set. If you specify line breaks, then you are controlling the wrapping of attributes directly, irrespective of the default wrapping/sorting settings. Attributes not listed in your custom ordering will be sorted (if the checkbox is checked). Extra newlines after the last attribute (for instance, if all of the attributes for a tag are specified in your custom ordering) will be ignored. The tag ending will never be on a line by itself unless you check the box on the custom ordering page.</li>
+<li>You can also create a group to define a set of multiple attributes, either listed individually or specified with regular expressions. Each group has its own sorting order and wrapping specification.</li>
+</ul>
+Here are some examples to show how you would specify certain combinations of line breaks and sorting.
+<ul>
+<li>I want to leave the attribute order unchanged, but start the first attribute on a new line, and add a new line after the last attribute.<br>
+	<ul>
+      <li>Click the "Configure custom attribute order..." button</li>
+      <li>Uncheck the "Don't use custom attribute order and line breaks" box</li>
+      <li>In the text field, enter: \n </li>
+      <li>Check the "Add newline before tag close" box</li>
+    </ul>
+</li> 
+
+The order of the attributes will not be changed. Wrapping will occur based on the default settings on the main preference page.
+
+<li>I want to always put 'x' and 'y' first, and on a new line after the tag start. However, don't start the first attribute on a new line if it's neither x nor y
+    <ul>
+      <li>Click the "Configure custom attribute order..." button</li>
+      <li>Uncheck the "Don't use custom attribute order and line breaks" box</li>
+      <li>In the text field, enter: \n,x,y</li>
+    </ul>
+</li>
+If you want to add a new line before additional attributes, change the setting to \n,x,y,\n
+
+<li>I want to always put 'id' first and then sort additional attributes. id should be on a line by itself.
+    <ul>
+      <li>Click the "Configure custom attribute order..." button</li>
+      <li>Uncheck the "Don't use custom attribute order and line breaks" box</li>
+      <li>In the text field, enter: \n,id,\n</li>
+      <li>Check the 'sort additional attributes' box.</li>
+    </ul>
+</li>
+
+<li>I want to have id on the first line, x and y on the second line, and one attribute on each additional line
+	<ul>
+      <li>Click the "Configure custom attribute order..." button</li>
+      <li>Uncheck the "Don't use custom attribute order and line breaks" box</li>
+      <li>In the text field, enter: id,\n</li>
+      <li>In the text field, enter: x,y,\n</li>
+      <li>On the main preference page, choose the "Wrap after reach n attributes" radio button, and set the "Attrs per line" spinner to 1.</li>
+    </ul>
+</li>
+
+<li>I want to add have id on the first line, then 1 blank lines before the rest of the attributes.
+     <ul>
+       <li>Click the "Configure custom attribute order..." button</li>
+       <li>Uncheck the "Don't use custom attribute order and line breaks" box</li>
+       <li>In the text field, enter: id,\n,\n</li>
+     </ul>
+</li>
+
+<li>There are several predefined groups (events, effects, properties, styles) that include many common attributes in those categories. You can augment those groups with additional items, or create your own groups.
+I want to order my tags with id first, then other properties, then styles, then other.
+     <ul>
+       <li>Click the "Configure custom attribute order..." button</li>
+       <li>Uncheck the "Don't use custom attribute order and line breaks" box</li>
+       <li>In the text field, enter: id</li>
+       <li>Use the combo and "Add attr group" button to select the "properties" group.</li>
+       <li>Use the combo and "Add attr group" button to select the "styles" group.</li>
+	 </ul>
+So your text line would read: "id,%properties%,%styles%" The syntax for regular expression attributes is the Java Pattern class syntax, defined <a href="http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html">here.</a> For example, you could get all the attrs with "Skin" in them by using ".*Skin.*".
+</li>
+
+<li>I want to order id, then tags that start with "xmlns:", then other things.
+	 <ul>
+       <li>Click the "Configure custom attribute order..." button</li>
+       <li>Uncheck the "Don't use custom attribute order and line breaks" box</li>
+       <li>Click the "Edit Groups..." button</li>
+       <li>Create a new group, and type in: xmlns:.*</li>
+       <li>This group will contain only the one specifier. However, since the specifier can contain multiple items, you can specify whether you want them sorted in ascending order, or to maintain their original order in the file. Also, you specify whether all the attributes in the group should be kept on the same line or wrapped.</li>
+       <li>After saving your new group, the combo box on the custom order dialog should show your new group.</li>
+       <li>In the text field, enter: id,%xmlnsGroup%</li>
+     </ul>
+</li>
+      
+</ul>
+</head>
+</html>

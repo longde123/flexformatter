@@ -1,0 +1,1480 @@
+/*
+License:
+  Currently there's no license restriction.You could use,modify it as you like.:)
+
+
+
+@Author He.Ye (email:allenofchina@hotmail.com)
+
+Known Issue that is incompatible with Ecma-262(ECMAScript3 Specification)
+1.[Lexer rule]RegularExpressionFirstChar must NOT be > , to avoid the consusable with XML Literal />
+
+Known Issue that is incompatible with Ecma-357(ECMAScript for XML (E4X) Specification)
+1. XMLName Lexer rule follows Ecma-262 Identifier rule (BUT can be a Reserved Word)
+*/
+grammar ActionScript3;
+options
+{
+    backtrack=true;
+    memoize=true;
+    output=AST;
+    //TokenLabelType=ASCommonToken;
+    ASTLabelType=ASCommonTree;
+}
+
+tokens{
+    AS          =   'as';
+    BREAK       =   'break';
+    CASE        =   'case';
+    CATCH       =   'catch';
+    CLASS       =   'class';
+    CONST       =   'const';
+    CONTINUE    =   'continue';
+    DEFAULT     =   'default';
+    DELETE      =   'delete';
+    DO          =   'do';
+    ELSE        =   'else';
+    EXTENDS     =   'extends';
+    FALSE       =   'false';
+    FINALLY     =   'finally';
+    FOR         =   'for';
+    FUNCTION    =   'function';
+    IF          =   'if';
+    IMPLEMENTS  =   'implements';
+    IMPORT      =   'import';
+    IN          =   'in';
+    INSTANCEOF  =   'instanceof';
+    INTERFACE   =   'interface';
+    INTERNAL    =   'internal';
+    IS          =   'is';
+    NATIVE      =   'native';
+    NEW         =   'new';
+    NULL        =   'null';
+    PACKAGE     =   'package';  
+    PRIVATE     =   'private';
+    PROTECTED   =   'protected';
+    PUBLIC      =   'public';
+    RETURN      =   'return';
+    SUPER       =   'super';
+    SWITCH      =   'switch';
+    THIS        =   'this';
+    THROW       =   'throw';
+    TO          =   'to';
+    TRUE        =   'true';
+    TRY         =   'try';
+    TYPEOF      =   'typeof';
+    USE         =   'use';
+    VAR         =   'var';
+    VOID        =   'void';
+    WHILE       =   'while';
+    WITH        =   'with'; 
+    
+    // KEYWORDs but can be identifier
+    EACH        =   'each';
+    GET         =   'get';
+    SET         =   'set';
+    NAMESPACE   =   'namespace';
+    INCLUDE     =   'include';
+    DYNAMIC     =   'dynamic';
+    FINAL       =   'final';
+    OVERRIDE    =   'override';
+    STATIC      =   'static';
+    
+    // Future KEYWORDS
+    //ABSTRACT    =   'abstract';
+    //BOOLEAN     =   'boolean';
+    //BYTE        =   'byte';
+    //CAST        =   'cast';
+    //CHAR        =   'char';
+    //DEBUGGER    =   'debugger';
+    //DOUBLE      =   'double';
+    //ENUM        =   'enum';
+    //EXPORT      =   'export';
+    //FLOAT       =   'float';
+    //GOTO        =   'goto';
+    //INTRINSIC   =   'intrinsic';
+    //LONG        =   'long';
+    //PROTOTYPE   =   'prototype';
+    //SHORT       =   'short';
+    //SYNCHRONIZED=   'synchronized';
+    //THROWS      =   'throws';
+    //TO          =   'to';
+    //TRANSIENT   =   'transient';
+    //TYPE        =   'type';
+    //VIRTUAL     =   'virtual';
+    //VOLATILE    =   'volatile';
+    
+    SEMI        = ';' ;
+    LCURLY      = '{' ;
+    RCURLY      = '}' ;
+    LPAREN      = '(' ;
+    RPAREN      = ')' ;
+    LBRACK      = '[' ;
+    RBRACK      = ']' ;
+    DOT         = '.' ;
+    COMMA       = ',' ;
+    LT          = '<' ;
+    GT          = '>' ;
+    LTE         = '<=' ;
+    GTE         = '>=' ;
+    EQ          = '==' ;
+    NEQ         = '!=' ;
+    SAME        = '===' ;
+    NSAME       = '!==' ;
+    PLUS        = '+' ;
+    SUB         = '-' ;
+    STAR        = '*' ;
+    DIV         = '/' ; 
+    MOD         = '%' ;
+    INC         = '++' ;
+    DEC         = '--' ;
+    SHL         = '<<' ;
+    SHR         = '>>' ;
+    SHU         = '>>>' ;
+    AND         = '&' ;
+    OR          = '|' ;
+    XOR         = '^' ;
+    NOT         = '!' ;
+    INV         = '~' ;
+    LAND        = '&&' ;
+    LOR         = '||' ;
+    QUE         = '?' ;
+    COLON       = ':' ;
+    ASSIGN      = '=' ;
+    UNDERSCORE  = '_';
+    DOLLAR      = '$';
+    MUL_ASSIGN  = '*=' ;
+    DIV_ASSIGN  = '/=' ;
+    MOD_ASSIGN  = '%=' ;
+    ADD_ASSIGN  = '+=' ;
+    SUB_ASSIGN  = '-=' ;
+    SHL_ASSIGN  = '<<=';
+    SHR_ASSIGN  = '>>=';
+    SHU_ASSIGN  = '>>>=';
+    AND_ASSIGN  = '&=' ;
+    XOR_ASSIGN  = '^=' ;
+    OR_ASSIGN   = '|=' ;
+    ELLIPSIS    = '...';
+    XML_TEND    = '/>';
+    XML_E_TEND  = '</';
+    XML_NS_OP   = '::';
+    XML_AT      = '@';
+    XML_LS_STD  = '<>';
+    XML_LS_END  = '</>';
+
+    // Statements
+    BREAK_STATEMENT;
+    BLOCK_STATEMENT;
+    CONSTANT_STATEMENT;
+    CONTINUE_STATEMENT;
+    DOWHILE_STATEMENT;
+    EMPTY_STATEMENT;
+    FOR_STATEMENT;
+    FOR_EACH_STATEMENT;
+    FOR_IN_STATEMENT;
+    IF_STATEMENT;
+    LABELLED_STATEMENT;
+    NAMESPACE_STATEMENT;
+    RETURN_STATEMENT;
+    SWITCH_STATEMENT;
+    TRY_STATEMENT;
+    USE_NAMESPACE_STATEMENT;
+    VARIABLE_STATEMENT;
+    WITH_STATEMENT;
+    WHILE_STATEMENT;
+     
+    // Expressions
+    CALL_EXPRESSION;
+    CONDITION_EXPRESSION;
+    CONDITION_EXPRESSION_NOIN;
+    EXPRESSION;
+    EXPRESSION_NOIN;
+    LEFT_HAND_SIDE_EXPRESSION;
+    MEMBER_EXPRESSION;
+    NEW_EXPRESSION;
+    PAR_EXPRESSION;
+    POSTFIX_EXPRESSION;
+    PRIMARY_EXPRESSION;
+    UNARY_EXPRESSION;
+
+	// Fragments
+    ARGUMENT;
+    ARGUMENT_LIST;
+    ARRAY_LITERAL;
+    CATCH_CLAUSE;
+    ELEMENT_LIST;
+    FINAL_CLAUSE;
+    FOR_CONTROL;
+    FOR_INIT;
+    FOR_UPDATE;
+    FOR_IN_CONTROL;
+    INDEX_SUFFIX;
+    OBJECT_LITERAL;
+    PROPERTY_NAME_VALUE;
+    PROPERTY_NAME_VALUE_LIST;
+    PROPERTY_REFERENCE_SUFFIX;
+    QUALIFIED_NAME;
+    SWITCH_BLOCK_GROUP;
+    SWITCH_LABEL;
+    VAR_ID_DECL;
+    VAR_DECL;
+    VAR_DECL_NOIN;
+    VAR_DECL_LIST;
+    VAR_DECL_LIST_NOIN;
+
+    // E4X Intergretion
+    E4X_XML_EXPR_EVAL;
+    E4X_XML_ATTRIBUTE;
+    E4X_XML_ATTRIBUTE_IDENTIFIER;
+    E4X_XML_CDATA;
+    E4X_XML_COMMENT;
+    E4X_XML_ELEMENT_CONTENT;
+    E4X_XML_ELEMENT;
+    E4X_XML_INITIALISER;
+    E4X_XML_LIST_INITIASER;
+    E4X_XML_NAME;
+    E4X_XML_PI;
+    E4X_XML_PROPERTY_IDENTIFIER;
+    E4X_XML_PROPERTY_SELECTER;
+    E4X_XML_QUALIFIED_IDENTIFER;
+    E4X_XML_TAG_NAME;
+    E4X_XML_TEXT;
+}
+@header{
+package heyesh.app.language.as3.parser;
+}
+@lexer::header{
+package heyesh.app.language.as3.parser;
+}
+@lexer::members
+{
+    /**  */
+    private Token lastDefaultCnlToken = null;
+    
+    // override
+    public Token nextToken()
+    {
+        Token result = super.nextToken();
+        if (result!=null && result.getType() != WHITESPACE )
+        {
+            lastDefaultCnlToken = result;
+        }
+        return result;      
+    }    
+
+    // override
+	/*public Token emit() {
+		Token t = new ASCommonToken(input, state.type, state.channel, state.tokenStartCharIndex, getCharIndex()-1);
+		t.setLine(state.tokenStartLine);
+		t.setText(state.text);
+		t.setCharPositionInLine(state.tokenStartCharPositionInLine);
+		emit(t);
+		return t;
+	}*/
+	
+    private final boolean isRegularExpression(){
+        if(lastDefaultCnlToken!=null){
+            switch(lastDefaultCnlToken.getType()){
+                case NULL :
+                case TRUE :
+                case FALSE:
+                case THIS :
+                case SUPER:
+                case IDENTIFIER:
+                case HEX_NUMBER_LITERAL:
+                case DEC_NUMBER_LITERAL:
+                case SINGLE_QUOTE_LITERAL:
+                case DOUBLE_QUOTE_LITERAL:
+                case RCURLY:
+                case RBRACK:
+                case RPAREN:
+                    return false;
+                default:
+                    break;
+            }
+        }
+
+        System.out.println("start to predict if is a ReglurExpression");
+        // start to predict if the next is a regular expression
+        int next = -1;
+        int index=1;
+        boolean success = false;
+        if((next=input.LA(index)) != '/'){
+            success = false;
+            return success;
+        }
+        index++;
+        // check the first regular character
+        next=input.LA(index);
+        if(next == '\r' || next == '\n' || next == '*' || next == '/' || next == '>'){
+            success = false;
+            return success;
+        }else if(next == '\\'){
+            next=input.LA(index+1);
+            if(next == '\r' || next == '\n'){
+                success=false;
+                return success;
+            }
+            // we omit the escape sequence \ u XXXX or \ x XX
+            index++;
+        }
+        index++;
+        // check the body of regular character
+        while((next=input.LA(index))!=-1){
+            //System.out.println("char["+index+"] = ("+(char)next+")");
+            switch(next){
+                case '\r':
+                case '\n':
+                    success = false;
+                    return success;
+                case '\\':
+                    next=input.LA(index+1);
+                    if(next == '\r' || next == '\n'){
+                        success=false;
+                        return success;
+                    }
+                    // we omit the escape sequence \ u XXXX or \ x XX
+                    index++;
+                    break;
+                case '/':
+                    success = true;
+                    return success;
+            }            
+            index++;
+        }
+        return success;
+    }
+        
+   /**
+    * <pre> judge if is a XMLName </pre>
+    * @param ch character
+    * @return if is a XMLName return true
+    */
+    private final boolean isXMLText(int ch){
+        System.out.println("isXMLText start");
+        return (ch!='{'&&ch!='<'&&!(isUnicodeIdentifierPart(ch)));
+    }
+        
+    /*---------------------------UNICODE_INDENTIFER START------------------------------------------*/    
+    private final boolean isUnicodeIdentifierPart(int ch){
+        return ch=='$'||ch=='_'||UnicodeUtil.isUnicodeLetter(ch)||UnicodeUtil.isUnicodeDigit(ch)||UnicodeUtil.isUnicodeCombiningMark(ch)||UnicodeUtil.isUnicodeConnectorPunctuation(ch);
+    }
+    
+    private final void consumeIdentifierUnicodeStart() throws RecognitionException, NoViableAltException{
+        int ch = input.LA(1);
+        if (UnicodeUtil.isUnicodeLetter(ch) || ch=='$' || ch=='_')
+        {
+            matchAny();
+            do
+            {
+                ch = input.LA(1);
+                if (isUnicodeIdentifierPart(ch))
+                {
+                    mIDENT_PART();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            while (true);
+        }
+        else
+        {
+            throw new NoViableAltException();
+        }
+    }
+
+    /*---------------------------UNICODE_INDENTIFER END------------------------------------------*/
+    private final void debugMethod(String methodName,String text){
+        System.out.println("recognized as <<"+methodName+">> text=("+text+")");
+    }    
+}
+@parser::members{
+   
+        boolean isNotReservedWord(String name) {
+        String[] reserveWords = new String[]
+            {
+                "as",
+                "break",
+                "case",
+                "catch",
+                "class",
+                "const",
+                "continue",
+                "default",
+                "delete",
+                "do",
+                "else",
+                "extends",
+                "false",
+                "finally",
+                "for",
+                "function",
+                "if",
+                "implements",
+                "import",
+                "in",
+                "instanceof",
+                "interface",
+                "internal",
+                "is",
+                "native",
+                "new",
+                "null",
+                "package",
+                "private",
+                "protected",
+                "public",
+                "return",
+                "super",
+                "switch",
+                "this",
+                "throw",
+                "to",
+                "true",
+                "try",
+                "typeof",
+                "use",
+                "var",
+                "void",
+                "while",
+                "with"
+            };
+        for (int i = 0; i<reserveWords.length; i++) {
+            if ( reserveWords[i].equals(name) ) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private final void promoteEOL(ParserRuleReturnScope rule)
+    {
+        System.out.println("start promoteEOL <<let HIDDENT Token EOL be visible>>");
+        Token lt = input.LT(1);
+        int index = lt.getTokenIndex();
+        if(index<0){
+            index = input.size();
+        }
+        int la = lt.getType();
+        
+        for (int ix = index - 1; ix >= 0; ix--){
+            lt = input.get(ix);
+            int type = lt.getType();
+            if (type == EOL || (type == COMMENT_MULTILINE && lt.getText().matches("/.*\r\n|\r|\n"))){
+                lt.setChannel(Token.DEFAULT_CHANNEL);
+                input.seek(lt.getTokenIndex());
+                System.out.println("promoteEOL : HIDDEN Token ("+lt+") is set to DEFAULT");
+                if (rule != null){
+                    System.out.println("promoteEOL :  startToken set as "+lt);
+                    rule.start = lt;
+                }
+                return;
+            }else if(lt.getChannel() == Token.DEFAULT_CHANNEL){
+                break;
+            }
+        }
+        System.out.println("");
+    }
+    
+    private final boolean promoteWhitespace(ParserRuleReturnScope rule){
+        Token lt = input.LT(1);
+        int index = lt.getTokenIndex();
+        if(index<0){
+            index = input.size();
+        }
+        int la = lt.getType();
+        
+        for (int ix = index - 1; ix >= 0; ix--){
+            lt = input.get(ix);
+            int type = lt.getType();
+            if (type == WHITESPACE || type == EOL ){
+                return true;
+            }else if(lt.getChannel() == Token.DEFAULT_CHANNEL){
+                break;
+            }
+        }
+        return false;
+    }
+}
+// Lexer Helper Rule
+fragment ALPHABET            :    'a'..'z'|'A'..'Z';
+
+fragment NUMBER              :    '0' .. '9';   
+
+fragment HEX_DIGIT           :    ('0' .. '9'|'a'..'f'|'A'..'F') ;
+
+fragment X                   :    'x'|'X';
+
+fragment CR                  :    '\r';
+
+fragment LF                  :    '\n';
+
+fragment UNICODE_ESCAPE      :    '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT;
+
+fragment ESCAPE_SEQUENCE     :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+                                 |   UNICODE_ESCAPE
+                                 ;
+// Lexer Ignored Rule
+EOL  
+@after{
+    debugMethod("EOL",$text);
+}                        
+    :    CR? LF                                           { $channel = HIDDEN; };
+
+WHITESPACE
+@after{
+    debugMethod("WHITESPACE",$text);
+}
+    :   (('\u0020'|'\u0009'|'\u000B'|'\u000C')|('\u001C'..'\u001F'))+              { $channel = HIDDEN; }
+    ;
+    
+COMMENT_MULTILINE           
+@after{
+    debugMethod("COMMENT_MULTILINE",$text);
+}
+    :   '/*' ( options {greedy=false;} : . )* '*/'         { $channel = HIDDEN; };
+
+COMMENT_SINGLELINE
+@after{
+    debugMethod("COMMENT_SINGLELINE",$text);
+}      
+    :   '//' ~( CR | LF )* CR? LF                          { $channel = HIDDEN; };
+
+// $<StringLiteral
+
+SINGLE_QUOTE_LITERAL
+@after{
+    debugMethod("SINGLE_QUOTE_LITERAL",$text);
+}          
+    :   '\'' ( ESCAPE_SEQUENCE | ~('\\'|'\'') )* '\'';
+DOUBLE_QUOTE_LITERAL         
+@after{
+    debugMethod("DOUBLE_QUOTE_LITERAL",$text);
+} 
+    :   '"'  ( ESCAPE_SEQUENCE | ~('\\'|'"') )* '"';
+
+// $>
+
+// $<RegularExpressionLiteral
+
+REGULAR_EXPR_LITERAL
+@after{
+    debugMethod("REGULAR_EXPR_LITERAL",$text);
+}
+    :   {isRegularExpression()}? => DIV REGULAR_EXPR_BODY DIV REGULAR_EXPR_FLAG*
+    ;
+
+fragment REGULAR_EXPR_BODY
+    :   REGULAR_EXPR_FIRST_CHAR REGULAR_EXPR_CHAR*
+    ;   
+
+// add > to the cannot be first char list
+fragment REGULAR_EXPR_FIRST_CHAR
+    :   ~(CR | LF |'*'|'\\'|'/'|'>')
+    |   BACKSLASH_SEQUENCE
+    ;
+
+fragment REGULAR_EXPR_CHAR
+    :   ~(CR | LF |'\\'|'/')
+    |   BACKSLASH_SEQUENCE
+    ;
+
+fragment BACKSLASH_SEQUENCE:    '\\' ~(CR | LF);    
+    
+fragment REGULAR_EXPR_FLAG :    IDENT_PART ;
+
+// $>
+
+// $<NumberLiteral
+
+HEX_NUMBER_LITERAL           
+@after{
+    debugMethod("HEX_NUMBER_LITERAL",$text);
+} 
+    : '0' X HEX_DIGIT+ ;
+
+fragment DEC_NUMBER          :  NUMBER+ '.' NUMBER* | '.' NUMBER+ | NUMBER+ ;
+
+DEC_NUMBER_LITERAL
+@after{
+    debugMethod("DEC_NUMBER_LITERAL",$text);
+} 
+    :  DEC_NUMBER EXPONENT? ;
+
+fragment EXPONENT            : ('e'|'E') ('+'|'-')? NUMBER+ ;
+
+// $>
+
+IDENTIFIER
+@after{
+    debugMethod("Identifier",$text);
+} 
+    :   IDENT_NAME_ASCII_START
+    |   UNICODE_ESCAPE+
+    |   {consumeIdentifierUnicodeStart();}
+    ;
+       
+fragment IDENT_NAME_ASCII_START   : IDENT_ASCII_START IDENT_PART*;
+
+fragment IDENT_ASCII_START        : ALPHABET | DOLLAR | UNDERSCORE;
+    
+fragment IDENT_PART 
+@after{
+    debugMethod("IDENT_PART",$text);
+} 
+    :   (IDENT_ASCII_START) => IDENT_ASCII_START
+    |   NUMBER
+    |   {isUnicodeIdentifierPart(input.LA(1))}? {matchAny();}
+    ;
+    
+XML_COMMENT
+@after{
+    debugMethod("XML_COMMENT",$text);
+}                  
+    :   '<!--' ( options {greedy=false;} : . )* '-->';
+    
+XML_CDATA options {k=8;}
+@after{
+    debugMethod("XML_CDATA",$text);
+}    
+    :   '<![CDATA' ( options {greedy=false;} : . )* ']]>' ;
+     
+XML_PI
+@after{
+    debugMethod("XML_PI",$text);
+}                      
+    :   '<?' ( options {greedy=false;} : . )* '?>'; 
+
+// SourceCharacters but no embedded left-curly { or less-than <    
+XML_TEXT 
+@after{
+    debugMethod("XMLText",$text);
+}   
+    : '\u0020'..'\u003b'
+    | '\u003d'..'\u007a'
+    | '\u007c'..'\u007e'
+    | {isXMLText(input.LA(1))}?{matchAny();}
+    ;
+
+    
+// $<Literal
+
+booleanLiteral                     :   TRUE | FALSE;
+
+numericLiteral                     :   DEC_NUMBER_LITERAL | HEX_NUMBER_LITERAL;
+
+stringLiteral                      :   SINGLE_QUOTE_LITERAL | DOUBLE_QUOTE_LITERAL;
+
+regularExpresionLiteral            :   REGULAR_EXPR_LITERAL;
+
+identifierLiteral                  :   {isNotReservedWord(input.LT(1).getText())}? IDENTIFIER;
+
+xmlNameLiteral                     :   IDENTIFIER                                            ->      ^(E4X_XML_NAME IDENTIFIER);
+
+literal                            :   NULL | booleanLiteral | numericLiteral | stringLiteral | regularExpresionLiteral;
+// $>
+
+xmlMarkup                          :   xmlComment | xmlCDATA | xmlPI;
+xmlComment                         :   XML_COMMENT                                           ->      ^(E4X_XML_COMMENT XML_COMMENT);  
+xmlCDATA                           :   XML_CDATA                                             ->      ^(E4X_XML_CDATA XML_CDATA); 
+xmlPI                              :   XML_PI                                                ->      ^(E4X_XML_PI XML_PI); 
+xmlExprEval                        :   '{' expression '}'                                    ->      ^(E4X_XML_EXPR_EVAL expression);
+
+
+xmlTextElement
+    :   EOL
+    |   WHITESPACE
+    |   NULL
+    |   TRUE | NULL
+    |   DEC_NUMBER_LITERAL |  HEX_NUMBER_LITERAL
+    |   SINGLE_QUOTE_LITERAL | DOUBLE_QUOTE_LITERAL
+    |   IDENTIFIER
+    |   (XML_TEXT+)
+    ;
+
+xmlText
+@init{
+    System.out.println("xmlText init start >>> input.index() = "+input.index());
+    for (int ix = input.index()-1; ix >= 0; ix--)
+    {
+        Token lt = input.get(ix);
+        System.out.println("xmlText init >>> token found ,DEFUALT= "+(lt.getChannel() == Token.DEFAULT_CHANNEL));
+        if (lt.getChannel() == Token.DEFAULT_CHANNEL)
+        {
+            // On channel token found: stop scanning.
+            break;
+        }
+        else if (lt.getType() == WHITESPACE || lt.getType() == EOL)
+        {
+            // We found our EOL: promote the token to on channel, position the input on it and reset the rule start.
+            lt.setChannel(Token.DEFAULT_CHANNEL);
+            input.seek(lt.getTokenIndex());
+            retval.start=lt;
+            break;
+        }
+    }
+}
+@after{
+    System.out.println("xmlText.text=("+$text+")");
+    System.out.println("xmlText after start currentIndex = "+input.index()+"size = "+input.size());
+}
+    :   xmlTextElement+                                                                        ->    ^(E4X_XML_TEXT xmlTextElement+)
+    ;
+
+// it's a helper rule,should not be a tree.
+xmlPrimaryExpression 
+    :   xmlPropertyIdentifier // E4X_XML_PROPERTY_IDENTIFIER
+    |   xmlInitialiser        // E4X_XML_INITIALISER
+    |   xmlListInitialiser    // E4X_XML_LIST_INITIASER
+    ;                                                                      
+
+/* 
+    XMLPropertyIdentifier can be a primary expression, but also can be a propertySuffixReference
+    see example
+        :   var xml:XML = <soap:Envelope soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>;
+            var soapNS:Namespace = message.namespace("soap");
+            trace(xml.@soapNS::encodingStyle); //-> it's a propertySuffixReference Call
+            with(xml){
+                trace(@soapNS::encodingStyle); //-> it's a primaryExpression Call
+            }
+*/
+xmlPropertyIdentifier
+      :   xmlAttributeIdentifier                                                                 ->    ^(E4X_XML_PROPERTY_IDENTIFIER xmlAttributeIdentifier)
+      |   xmlQualifiedIdentifier                                                                 ->    ^(E4X_XML_PROPERTY_IDENTIFIER xmlQualifiedIdentifier)
+      |   STAR                                                                                   ->    ^(E4X_XML_PROPERTY_IDENTIFIER STAR)                                    
+      ;    
+
+xmlAttributeIdentifier
+    :   '@' (
+             xmlPropertySelector                                                               ->     ^(E4X_XML_ATTRIBUTE_IDENTIFIER xmlPropertySelector)
+           | xmlQualifiedIdentifier                                                            ->     ^(E4X_XML_ATTRIBUTE_IDENTIFIER xmlQualifiedIdentifier)
+           | indexSuffix                                                                       ->     ^(E4X_XML_ATTRIBUTE_IDENTIFIER indexSuffix)
+        )                                                        
+    ; 
+    
+xmlPropertySelector
+    :   xmlNameLiteral                                                                         ->     ^(E4X_XML_PROPERTY_SELECTER xmlNameLiteral)
+    |   STAR                                                                                   ->     ^(E4X_XML_PROPERTY_SELECTER STAR)
+    ;
+
+xmlQualifiedIdentifier
+    :   a=xmlPropertySelector  '::'                  
+    (
+        b=xmlPropertySelector                                                                  ->     ^(E4X_XML_QUALIFIED_IDENTIFER $a $b)
+        | indexSuffix                                                                          ->     ^(E4X_XML_QUALIFIED_IDENTIFER $a indexSuffix)
+    )
+    ;
+
+xmlInitialiser
+    :   xmlMarkup                                                                              ->     ^(E4X_XML_INITIALISER xmlMarkup)
+    |   xmlElement                                                                             ->     ^(E4X_XML_INITIALISER xmlElement)
+    ;
+    
+xmlElement
+    :   '<' a=xmlTagName xmlAttributes? 
+    (
+        '/>'                                                                                   ->  ^(E4X_XML_ELEMENT $a xmlAttributes?)
+         | '>' xmlElementContent? '</' b=xmlTagName '>'                                        ->  ^(E4X_XML_ELEMENT $a xmlElementContent? $b)
+    )
+    ; 
+    
+xmlAttributes
+    :   xmlAttribute+
+    ;      
+    
+xmlTagName
+    :   xmlExprEval                                                                            ->     ^(E4X_XML_TAG_NAME xmlExprEval)
+    |   xmlNameLiteral                                                                         ->     ^(E4X_XML_TAG_NAME xmlNameLiteral)
+    ; 
+
+xmlAttribute
+    :  {promoteWhitespace(null)}? a=xmlNameLiteral  '=' 
+    (
+        b=xmlExprEval                                                                          ->     ^(E4X_XML_ATTRIBUTE $a $b)
+        | c=stringLiteral                                                                      ->     ^(E4X_XML_ATTRIBUTE $a $c)
+    )
+    ;
+       
+xmlElementContent
+    :  xmlElementContentHelper+                                                                ->      ^(E4X_XML_ELEMENT_CONTENT xmlElementContentHelper+)
+    ;
+
+xmlElementContentHelper
+    :   xmlExprEval | xmlMarkup | xmlElement | xmlText;
+
+xmlListInitialiser
+    :   '<>' xmlElementContent? '</>'                                                          ->      ^(E4X_XML_LIST_INITIASER xmlElementContent?)
+    ;
+
+// semic rule
+semic
+@init
+{
+    // Mark current position so we can unconsume a RBRACE.
+    int marker = input.mark();
+    // Promote EOL if appropriate   
+    promoteEOL(retval);
+}
+    :   SEMI
+    |   EOF
+    |   RCURLY { input.rewind(marker); }
+    |   EOL 
+    |   COMMENT_MULTILINE // (with EOL in it)
+    ;
+
+
+
+// $<Package Declaration
+
+packageDeclaration
+	:   PACKAGE (type)? LCURLY packageElement* RCURLY
+	;
+			
+packageElement
+    :   importDeclaration | classOrInterfaceDecl | statement
+    ;
+
+importDeclaration
+	:   IMPORT type
+	;
+
+classOrInterfaceDecl
+	:   memberModifiers? (interfaceDeclaration | classDeclaration)
+	;
+
+// $>
+
+// $<Class / Interface Body
+
+interfaceDeclaration
+	:   INTERFACE type (EXTENDS type)?
+        interfaceBody
+	;	
+
+interfaceBody
+	:   LCURLY interfaceElement* RCURLY
+	;	
+
+classDeclaration
+	:   CLASS type ( EXTENDS type)? ( IMPLEMENTS typeList)?
+        classBody
+    ;  
+    
+  
+
+classBody
+	:   LCURLY classBodyElement* RCURLY
+	;
+
+// $>
+	 
+// $<Class/Interface Element
+
+classBodyElement
+    :   propertyDeclaration | functionDeclaration | statement
+	;
+
+interfaceElement
+    :   propertyDeclaration | interfaceFunctionDeclaration | statement
+    ;
+
+// $>
+	 
+
+
+// $<InterfaceFunction Declaration
+
+interfaceFunctionDeclaration
+    :   memberModifiers? FUNCTION (SET|GET)? name=IDENTIFIER formalParameterList (COLON type)?
+    ;
+
+// $>
+
+// $<Property Declaration
+
+propertyDeclaration
+	:   memberModifiers? (variableStatement | constantVarStatement)
+	;
+
+// $>
+
+// $<Function Definition (13)
+
+functionDeclaration
+    :   memberModifiers? FUNCTION (SET|GET)? name=IDENTIFIER formalParameterList (COLON type)? functionBody
+    ;
+
+functionExpression
+    :   FUNCTION name=IDENTIFIER? formalParameterList (COLON type)? functionBody
+    ;
+
+formalParameterList
+    :   LPAREN ( variableDeclaration ( COMMA variableDeclaration )* ( COMMA  formalEllipsisParameter)? )? RPAREN
+    ;
+    
+formalEllipsisParameter
+    :   ELLIPSIS  qualifiedIdentifier
+    ;   
+
+functionBody
+    :   LCURLY (statement|functionDeclaration)* RCURLY
+    ;
+
+// $>
+
+// $<Member Modifiers
+
+memberModifiers
+    :   memberModifier+
+    ;
+
+memberModifier
+    :   DYNAMIC
+    |   FINAL
+    |   INTERNAL
+    |   NATIVE
+    |   OVERRIDE
+    |   PRIVATE
+    |   PROTECTED
+    |   PUBLIC
+    |   STATIC
+    ;
+
+// $>
+
+
+// statement
+
+// $<Statement
+
+statement
+    :   blockStatement
+    |   useNamespaceStatement
+    |   namespaceStatement
+    |   constantVarStatement
+    |   tryStatement
+    |   labelledStatement
+    |   switchStatement
+    |   withStatement
+    |   returnStatement
+    |   breakStatement
+    |   continueStatement
+    |   forStatement
+    |   forInStatement
+    |   doWhileStatement
+    |   whileStatement
+    |   ifStatement
+    |   emptyStatement
+    |   variableStatement
+    ;
+
+// $>
+
+
+// $<Block Statement
+
+blockStatement
+    :   LCURLY statement* RCURLY                                                                                            -> ^(BLOCK_STATEMENT statement*)
+    ;
+
+// $>
+
+// $<Constant Var Statement
+
+constantVarStatement
+    :   CONST  variableDeclarationList SEMI?                                                                                -> ^(CONSTANT_STATEMENT variableDeclarationList)
+    ; 
+// $>
+
+    
+// $<UseNamespace Statement
+
+useNamespaceStatement
+    :   USE  NAMESPACE  qualifiedIdentifier SEMI?                                                                           -> ^(USE_NAMESPACE_STATEMENT qualifiedIdentifier)
+    ;
+
+// $>
+
+// $<Namespace Statement
+
+namespaceStatement
+    :   NAMESPACE  qualifiedIdentifier ( ASSIGN  stringLiteral)? SEMI?                                                      -> ^(NAMESPACE_STATEMENT qualifiedIdentifier stringLiteral?)
+    ;
+
+// $>
+
+
+// $<Try Statement(12.14)
+
+tryStatement
+    : TRY blockStatement
+        ( catchClause+ finallyClause                                                                                        -> ^(TRY_STATEMENT blockStatement catchClause+ finallyClause)
+        | catchClause+                                                                                                      -> ^(TRY_STATEMENT blockStatement catchClause+)
+        | finallyClause                                                                                                     -> ^(TRY_STATEMENT blockStatement finallyClause)
+        )
+    ;
+
+catchClause
+    : CATCH LPAREN variableIdentifierDecl RPAREN blockStatement                                                             -> ^(CATCH_CLAUSE variableIdentifierDecl blockStatement)
+    ;
+
+finallyClause
+    : FINALLY blockStatement                                                                                                -> ^(FINAL_CLAUSE blockStatement)
+    ;
+
+// $>
+
+// $<Labelled Statement(12.12)
+
+labelledStatement
+    :  IDENTIFIER COLON statement                                                                                           -> ^(LABELLED_STATEMENT IDENTIFIER statement)
+    ;
+
+// $>
+
+// $<switch Statement(12.11)
+
+switchStatement
+    :  SWITCH parExpression LCURLY switchBlockStatementGroup* RCURLY                                                        -> ^(SWITCH_STATEMENT parExpression switchBlockStatementGroup*)
+    ;
+    
+/* The change here (switchLabel -> switchLabel+) technically makes this grammar
+   ambiguous; but with appropriately greedy parsing it yields the most
+   appropriate AST, one in which each group, except possibly the last one, has
+   labels and statements. */
+switchBlockStatementGroup
+    :   switchLabel+ blockStatement*                                                                                        -> ^(SWITCH_BLOCK_GROUP switchLabel+ blockStatement*)
+    ;
+    
+switchLabel
+    :   CASE expression COLON                                                                                               -> ^(SWITCH_LABEL expression)
+    |   DEFAULT COLON                                                                                                       -> ^(SWITCH_LABEL DEFAULT)
+    ;
+
+// $>
+
+// $<With statement(12.10)
+
+withStatement
+    :   WITH  LPAREN  expression  RPAREN  statement                                                                         -> ^(WITH_STATEMENT expression statement)
+    ;
+
+// $>
+
+// $<Return statment (12.9)
+
+returnStatement
+    :   RETURN expression? semic                                                                                            -> ^(RETURN_STATEMENT expression?)
+    ;
+
+// $>
+
+
+// $<Break statement (12.8)
+
+breakStatement
+    :   BREAK IDENTIFIER? semic                                                                                             -> ^(BREAK_STATEMENT IDENTIFIER?)
+    ;
+
+// $>
+
+
+// $<Continue statement (12.7)
+
+continueStatement
+    :   CONTINUE IDENTIFIER? semic                                                                                          -> ^(CONTINUE_STATEMENT IDENTIFIER?)
+    ;
+
+// $>
+
+
+// $<For statement 12.6
+
+forStatement
+    :   FOR LPAREN forControl RPAREN statement                                                                             -> ^(FOR_STATEMENT forControl statement)
+    ;
+    
+forInStatement
+    :   FOR LPAREN forInControl RPAREN statement                                                                     	   -> ^(FOR_IN_STATEMENT forInControl statement)
+    ;  
+    
+forEachInStatement
+    :   FOR EACH LPAREN forInControl RPAREN statement                                                                      -> ^(FOR_EACH_STATEMENT forInControl statement)     
+	;
+forControl
+options {k=3;} // be efficient for common case: for (ID ID : ID) ...
+    :   forInit? semic expression? semic forUpdate?                                                                        -> ^(FOR_CONTROL forInit? expression? forUpdate?)
+    ;
+
+forInControl
+options {k=3;} // be efficient for common case: for (ID ID : ID) ...
+    :   forInDecl IN expression                                                                                            -> ^(FOR_IN_CONTROL forInDecl expression)
+    ;
+
+forInDecl
+    :   leftHandSideExpression
+    |   variableDeclarationNoIn
+    ;
+
+forInit
+    :   variableDeclarationNoInList                                                                                         -> ^(FOR_INIT variableDeclarationNoInList)
+    |   expressionNoIn                                                                                                      -> ^(FOR_INIT expressionNoIn)
+    ;
+
+forUpdate
+    :   expression                                                                                                          -> ^(FOR_UPDATE expression)
+    ;
+
+// $>
+
+
+// $<While statement (12.5)
+
+doWhileStatement
+    :   DO statement WHILE parExpression semic SEMI?                                                                        -> ^(DOWHILE_STATEMENT parExpression statement)
+    ;
+
+// $>
+
+// $<While statement (12.5)
+
+whileStatement
+    :   WHILE parExpression statement                                                                                       -> ^(WHILE_STATEMENT parExpression statement)
+    ;
+    
+// $>
+
+
+
+// $<If statement (12.5)
+
+ifStatement
+    :   IF parExpression stmt=statement (options {k=1;}:ELSE thenstmt=statement)?                                           -> ^(IF_STATEMENT parExpression $stmt $thenstmt) 
+    ;
+    
+// $>   
+    
+
+// $<Empty statement (12.3)
+
+emptyStatement 
+    :     SEMI                                                                                                              -> ^(EMPTY_STATEMENT) 
+    ;
+
+// $>
+
+
+// $<Variable statement 12.2)
+
+variableStatement
+    :     VAR variableDeclaration ( COMMA variableDeclaration )* semic                                                      -> ^(VARIABLE_STATEMENT variableDeclaration+)
+    ;
+    
+variableDeclarationList
+    :     variableDeclaration ( COMMA variableDeclaration)*                                                                 -> ^(VAR_DECL_LIST variableDeclaration+)
+    ;
+    
+variableDeclarationNoInList
+    :    variableDeclarationNoIn ( COMMA variableDeclarationNoIn)*                                                          -> ^(VAR_DECL_LIST_NOIN variableDeclarationNoIn+)
+    ;
+    
+variableDeclaration
+    :    variableIdentifierDecl ( ASSIGN assignmentExpression )?                                                            -> ^(VAR_DECL variableIdentifierDecl assignmentExpression?)
+    ;
+
+variableDeclarationNoIn
+    :    variableIdentifierDecl ( ASSIGN assignmentExpressionNoIn )?                                                        -> ^(VAR_DECL_NOIN variableIdentifierDecl assignmentExpressionNoIn?)
+    ;
+    
+variableIdentifierDecl
+    :    IDENTIFIER ( COLON type )?                                                                                         -> ^(VAR_ID_DECL IDENTIFIER type?)
+    ;
+// $>
+    
+// $<Type / Type List
+
+type:   qualifiedName;
+
+typeList
+    :   type (COMMA type)*
+    ; 
+// $>
+     
+
+qualifiedName 
+    :   IDENTIFIER (a=(DOT IDENTIFIER))*                                                                                    -> ^(QUALIFIED_NAME IDENTIFIER $a*)
+    ;
+    
+qualifiedIdentifier
+    :   {isNotReservedWord(input.LT(1).getText())}? IDENTIFIER 
+    ;
+
+
+// Expression
+
+parExpression
+    : LPAREN  expression  RPAREN                                                                                            -> ^(PAR_EXPRESSION expression)                                                     
+    ;
+
+expression
+    :   assignmentExpression ( COMMA  assignmentExpression)*                                                                -> ^(EXPRESSION assignmentExpression+)
+    ;
+
+expressionNoIn
+    :   assignmentExpressionNoIn ( COMMA  assignmentExpressionNoIn)*                                                        -> ^(EXPRESSION_NOIN assignmentExpressionNoIn+)
+    ;
+
+//11.13 Assignment Operators
+assignmentExpression
+    :   conditionalExpression
+    |   leftHandSideExpression  assignmentOperator^  assignmentExpression
+    ;
+/*
+assignmentExpression
+@init
+{
+    Object[] isLhs = new Object[1];
+}
+    : lhs=conditionalExpression
+    ( { isLeftHandSideAssign(lhs, isLhs) }? assignmentOperator^ assignmentExpression )? 
+    ;
+*/
+
+assignmentExpressionNoIn
+    :   conditionalExpressionNoIn
+    |   leftHandSideExpression  assignmentOperator^  assignmentExpressionNoIn
+    ;
+    
+assignmentOperator
+    : ASSIGN 
+    | MUL_ASSIGN 
+    | DIV_ASSIGN 
+    | MOD_ASSIGN 
+    | ADD_ASSIGN 
+    | SUB_ASSIGN 
+    | ('<' '<' '=')=> t1='<' t2='<' t3='=' 
+        { $t1.getLine() == $t2.getLine() &&
+          $t1.getCharPositionInLine() + 1 == $t2.getCharPositionInLine() && 
+          $t2.getLine() == $t3.getLine() && 
+          $t2.getCharPositionInLine() + 1 == $t3.getCharPositionInLine() }?
+      -> SHL_ASSIGN
+    |   ('>' '>' '=')=> t1='>' t2='>' t3='='
+        { $t1.getLine() == $t2.getLine() && 
+          $t1.getCharPositionInLine() + 1 == $t2.getCharPositionInLine() && 
+          $t2.getLine() == $t3.getLine() && 
+          $t2.getCharPositionInLine() + 1 == $t3.getCharPositionInLine() }?
+      -> SHR_ASSIGN
+
+    | ('>' '>' '>' '=')=> t1='>' t2='>' t3='>' t4='='
+        { $t1.getLine() == $t2.getLine() && 
+          $t1.getCharPositionInLine() + 1 == $t2.getCharPositionInLine() &&
+          $t2.getLine() == $t3.getLine() && 
+          $t2.getCharPositionInLine() + 1 == $t3.getCharPositionInLine() &&
+          $t3.getLine() == $t4.getLine() && 
+          $t3.getCharPositionInLine() + 1 == $t4.getCharPositionInLine() }?
+      -> SHU_ASSIGN 
+    | AND_ASSIGN 
+    | XOR_ASSIGN 
+    | OR_ASSIGN
+    ;
+
+//11.12 Conditional Operator ( ?: )
+conditionalExpression
+    :   logicalORExpression ( QUE  ass1=assignmentExpression  COLON  ass2=assignmentExpression)?                            -> ^(CONDITION_EXPRESSION logicalORExpression $ass1? $ass2?)
+    ;
+    
+conditionalExpressionNoIn
+    :   logicalORExpressionNoIn ( QUE ass1=assignmentExpression  COLON  ass2=assignmentExpression)?                         -> ^(CONDITION_EXPRESSION_NOIN logicalORExpressionNoIn $ass1? $ass2?)
+    ;    
+    
+//11.11 Binary Logical Operators
+logicalORExpression
+    :   logicalANDExpression ( LOR^ logicalANDExpression)*
+    ; 
+    
+logicalORExpressionNoIn
+    :   logicalANDExpressionNoIn ( LOR^ logicalANDExpressionNoIn)*
+    ;     
+    
+logicalANDExpression
+    :   bitwiseORExpression ( LAND^ bitwiseORExpression)*
+    ;
+    
+logicalANDExpressionNoIn
+    :   bitwiseORExpressionNoIn ( LAND^ bitwiseORExpressionNoIn)*
+    ;    
+    
+//11.10 Binary Bitwise Operators
+bitwiseORExpression
+    :   bitwiseXORExpression ( OR^ bitwiseXORExpression)*
+    ;
+    
+bitwiseORExpressionNoIn
+    :   bitwiseXORExpressionNoIn ( OR^ bitwiseXORExpressionNoIn)*
+    ;    
+    
+bitwiseXORExpression
+    :   bitwiseANDExpression ( XOR^ bitwiseANDExpression)*
+    ;
+    
+bitwiseXORExpressionNoIn
+    :   bitwiseANDExpressionNoIn ( XOR^ bitwiseANDExpressionNoIn)*
+    ;    
+
+bitwiseANDExpression
+    :   equalityExpression ( AND^ equalityExpression)*
+    ;
+    
+bitwiseANDExpressionNoIn
+    :   equalityExpressionNoIn ( AND^ equalityExpressionNoIn)*
+    ;    
+
+//11.9 Equality Operators
+equalityExpression
+    :   relationalExpression ( (EQ|NEQ|SAME|NSAME)^  relationalExpression)*
+    ;
+    
+equalityExpressionNoIn
+    :   relationalExpressionNoIn ( (EQ|NEQ|SAME|NSAME)^  relationalExpressionNoIn)*
+    ;    
+
+//11.8 Relational Operators
+relationalExpression
+    :   shiftExpression ( (IN|LT|GT|LTE|GTE|INSTANCEOF)^  shiftExpression)*
+    ;
+    
+relationalExpressionNoIn
+    :   shiftExpression ( (LT|GT|LTE|GTE|INSTANCEOF)^  shiftExpression)*
+    ;          
+
+//11.7 Bitwise Shift Operators
+shiftExpression
+    :   additiveExpression ( (SHL|SHR|SHU)^ additiveExpression)*
+    ;
+
+//11.6 Additive Operators
+additiveExpression
+    :   multiplicativeExpression ( (PLUS|SUB)^  multiplicativeExpression)*                                          
+    ;
+
+//11.5 Multiplicative Operators
+multiplicativeExpression
+    :   unaryExpression ( (STAR|DIV|MOD)^ unaryExpression)*
+    ;
+
+//11.4 Unary Operators
+unaryExpression
+    :   postfixExpression
+    |   unaryOp postfixExpression                                                                                           -> ^(UNARY_EXPRESSION unaryOp postfixExpression)
+    ;
+/*unaryExpression
+    :   unaryOp? postfixExpression                                                                                          -> ^(UNARY_EXPRESSION unaryOp? postfixExpression)
+    ;
+*/
+unaryOp
+    :   DELETE | VOID | TYPEOF | INC | DEC | PLUS | SUB | INV | NOT
+    ;
+
+
+//11.3 Postfix Expressions
+postfixExpression
+    :   leftHandSideExpression postfixOp?                                                                                   -> ^(POSTFIX_EXPRESSION leftHandSideExpression postfixOp?)
+    ;
+    
+postfixOp
+    :   INC | DEC
+    ;
+
+//11.2 Left-Hand-Side Expressions
+leftHandSideExpression
+    :   newExpression                                                                                                       -> ^(LEFT_HAND_SIDE_EXPRESSION newExpression)
+    |   callExpression                                                                                                      -> ^(LEFT_HAND_SIDE_EXPRESSION callExpression)
+    ;
+
+newExpression
+    : memberExpression
+    | NEW  memberExpression                                                                                                 -> ^(NEW_EXPRESSION memberExpression)
+    ;
+/*
+newExpression
+    :   NEW? memberExpression                                                                                               -> ^(NEW_EXPRESSION NEW? memberExpression)
+    ;    
+*/    
+
+callExpression
+    :   memberExpression arg1=argument (arg2=(argument|suffix))*                                                            -> ^(CALL_EXPRESSION memberExpression $arg1 $arg2*)
+    ;
+  
+memberExpression:
+        primaryExpression                                                                                                   -> ^(MEMBER_EXPRESSION primaryExpression)
+    |   functionExpression                                                                                                  -> ^(MEMBER_EXPRESSION functionExpression)
+    |   NEW  memberExpression argument suffix*                                                                              -> ^(MEMBER_EXPRESSION memberExpression argument suffix*)             
+    ;                     
+    
+argument
+    :    LPAREN argumentList? RPAREN                                                                                        -> ^(ARGUMENT argumentList?)
+    ;
+argumentList
+    :    assignmentExpression (COMMA assignmentExpression)*                                                                 -> ^(ARGUMENT_LIST assignmentExpression+)
+    ;
+/*suffix helper rule*/ 
+suffix
+    :    indexSuffix | propertyReferenceSuffix
+    ;
+/*code like [i] or [1]*/     
+indexSuffix             
+    :    LBRACK  expression  RBRACK                                                                                         -> ^(INDEX_SUFFIX expression)
+    ;
+    
+propertyReferenceSuffix
+    :    DOT  IDENTIFIER                                                                                                    -> ^(PROPERTY_REFERENCE_SUFFIX DOT IDENTIFIER)
+    |    DOT  xmlPropertyIdentifier                                                                                         -> ^(PROPERTY_REFERENCE_SUFFIX DOT xmlPropertyIdentifier)
+    |    DOT       /*it's a xml only reference match*/                                                                      -> ^(PROPERTY_REFERENCE_SUFFIX DOT)
+    ;
+
+//11.1 Primary Expression
+primaryExpression  
+    :    primaryExpressionHelper                                                                                            -> ^(PRIMARY_EXPRESSION primaryExpressionHelper)
+    ;
+    
+/* derived from ECMA-262 basicly. but add super alternative*/
+primaryExpressionHelper
+    :   THIS
+    |   SUPER
+    |   literal    
+    |   arrayLiteral // ARRAY_LITERAL
+    |   objectLiteral  // OBJECT_LITERAL
+    |   identifierLiteral
+    |   xmlPrimaryExpression
+    |   parExpression // PAR_EXPRESSION
+    ;
+
+//11.1.5 Object Initialiser
+objectLiteral
+    :   LCURLY propertyNameAndValueList? RCURLY                                                                             -> ^(OBJECT_LITERAL propertyNameAndValueList?) 
+    ;
+
+propertyNameAndValueList
+    :   propertyNameAndValue (COMMA propertyNameAndValue)*                                                                  -> ^(PROPERTY_NAME_VALUE_LIST propertyNameAndValue+)
+    ;
+
+propertyNameAndValue
+    :   propertyName COLON assignmentExpression                                                                             -> ^(PROPERTY_NAME_VALUE propertyName assignmentExpression)
+    ;
+
+propertyName
+    :   identifierLiteral
+    |   stringLiteral
+    |   numericLiteral
+    ;
+
+//11.1.4 Array Initialiser
+arrayLiteral
+    :   LBRACK elementList? RBRACK                                                                                          -> ^(ARRAY_LITERAL elementList?)
+    ;
+
+elementList
+    :   assignmentExpression (COMMA assignmentExpression)*                                                                  -> ^(ELEMENT_LIST assignmentExpression+)
+    ;

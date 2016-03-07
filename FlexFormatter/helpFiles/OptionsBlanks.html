@@ -1,0 +1,42 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<h1>Actionscript blank line and spacing settings</h1>
+	<h2>Spacing</h2>
+		<h3>Spaces inside (,[</h3>
+		This is the number of spaces inside parentheses, brackets, and braces (for arrays).  This option is only used if 
+		the box is checked.  Otherwise, the individual settings for parenthese, brackets, and braces are used.
+		  
+		<h3>No spaces between adjacent (,[</h3>
+		If checked, nesting characters that appear next to each other will not have spaces between them, regardless of the <b>Spaces inside</b> setting. Ex. <b>[(( x + 2 ) + 3 )]</b>.
+		<h3>Spaces before comma, Spaces after comma</h3>
+		This is the number of spaces before/after commas as they appear in parameter lists, method arguments, array declarations, etc.
+		<h3>Spaces around assignments, Spaces around operators</h3>
+		This is the number of spaces on either side of an '=' or boolean/arithmetic operator.  This applies to symbolic operators only.  Text operators (like 'as' and 'instanceof') will always have only 1 space on either side.
+		<h3>Spaces around colons</h3>
+		This is the number of spaces on either side of a ':' character in variable declarations.
+		<h3>Spaces after labels</h3>
+		This is the number of spaces after the colon of a labels.  Labels never have any space before the colon.
+		<h3>Spaces before open paren (after keyword)</h3>
+		This is the number of spaces to use after the end of a control keyword before the open paren.  Ex. between 'while' and '('
+		<h3>Spaces before open paren (in function)</h3>
+		This is the number of spaces to use before the open paren that starts a function declaration parameter list.
+		 	
+	<h2>Blank lines</h2>
+	<h3>Don't delete existing blank lines</h3>
+		If checked, don't delete any lines in the document that only contain whitespace.  This does not mean that line breaks
+		won't be removed, only that empty lines (2 or more line breaks in a row) will be preserved.  Additional blank lines
+		may be added.  If not checked, then blank lines will be removed depending on the blank lines settings.  Often you
+		would leave this item checked so that extra blank lines used to group variable declarations or other code won't be lost.
+	<h4>
+		If unchecked, then an additional setting is available to preserve some blank lines. The idea is that 'extra' blank lines will be removed, but you won't lose your existing code groupings.
+	</h4>  
+	<h3>Lines before functions, Lines before classes, Lines before control statements</h3>
+		This is the number of blank lines to insert before these items. The idea is to keep a consistent amount of whitespace. Note that if you have "Don't delete blank lines" turned on, then the number of blank lines will never shrink, regardless of this setting.
+	<h3>Always generate indent</h3>
+		For all lines, even lines with no text, generate indent whitespace (tabs or spaces).  
+
+	<h2>Don't indent // comments in first column</h2>
+		If checked, don't indent line comments that start in column one. Some people keep TODO comments there. 
+</head>
+</html>

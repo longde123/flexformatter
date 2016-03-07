@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+					 layout="absolute"
+					 attr="{ var }"
+					 layoutString="{ var.color }--{ var.name }."
+					 escaped="{ >>variable }\{\n\}{ endItem.value }"
+					 expr="{ x + y * z }"
+					 expr2=" { item } "
+					 boundary1="{ new Vector() + callMethod(a, b, c) }">
+</mx:Application>

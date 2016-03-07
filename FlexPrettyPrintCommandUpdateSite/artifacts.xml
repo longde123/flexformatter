@@ -1,0 +1,977 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository class='org.eclipse.equinox.internal.p2.artifact.repository.simple.SimpleArtifactRepository' version='1.0.0'?>
+<repository name='file:/C:/Eclipse/Workspaces/FlexStuff/FlexPrettyPrintCommandUpdateSite/ - artifacts' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1'>
+  <properties size='2'>
+    <property name='p2.compressed' value='false'/>
+    <property name='p2.timestamp' value='1312640803141'/>
+  </properties>
+  <mappings size='3'>
+    <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
+    <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
+  </mappings>
+  <artifacts size='143'>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.2.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='17677'/>
+        <property name='download.size' value='17677'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='17985'/>
+        <property name='download.size' value='17985'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.24'>
+      <properties size='3'>
+        <property name='artifact.size' value='2037133'/>
+        <property name='download.size' value='2037133'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.6'>
+      <properties size='3'>
+        <property name='artifact.size' value='17985'/>
+        <property name='download.size' value='17985'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='1786'/>
+        <property name='download.size' value='1786'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.8'>
+      <properties size='3'>
+        <property name='artifact.size' value='873392'/>
+        <property name='download.size' value='873392'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='844208'/>
+        <property name='download.size' value='844208'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.0.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='1760152'/>
+        <property name='download.size' value='1760152'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='767772'/>
+        <property name='download.size' value='767772'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.18'>
+      <properties size='2'>
+        <property name='artifact.size' value='1669'/>
+        <property name='download.size' value='1669'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.1.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='1766066'/>
+        <property name='download.size' value='1766066'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.30'>
+      <properties size='2'>
+        <property name='artifact.size' value='1797'/>
+        <property name='download.size' value='1797'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.33'>
+      <properties size='3'>
+        <property name='artifact.size' value='699534'/>
+        <property name='download.size' value='699534'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.25'>
+      <properties size='3'>
+        <property name='artifact.size' value='2061099'/>
+        <property name='download.size' value='2061099'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.6'>
+      <properties size='2'>
+        <property name='artifact.size' value='1790'/>
+        <property name='download.size' value='1790'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.21'>
+      <properties size='2'>
+        <property name='artifact.size' value='1797'/>
+        <property name='download.size' value='1797'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='1765183'/>
+        <property name='download.size' value='1765183'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.8'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767866'/>
+        <property name='download.size' value='1767866'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.22'>
+      <properties size='2'>
+        <property name='artifact.size' value='1797'/>
+        <property name='download.size' value='1797'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.7'>
+      <properties size='2'>
+        <property name='artifact.size' value='1790'/>
+        <property name='download.size' value='1790'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='1787'/>
+        <property name='download.size' value='1787'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.32'>
+      <properties size='3'>
+        <property name='artifact.size' value='699356'/>
+        <property name='download.size' value='699356'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.29'>
+      <properties size='3'>
+        <property name='artifact.size' value='687931'/>
+        <property name='download.size' value='687931'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.16'>
+      <properties size='2'>
+        <property name='artifact.size' value='694'/>
+        <property name='download.size' value='694'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.23'>
+      <properties size='2'>
+        <property name='artifact.size' value='1798'/>
+        <property name='download.size' value='1798'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.6.32'>
+      <properties size='3'>
+        <property name='artifact.size' value='17775'/>
+        <property name='download.size' value='17775'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.30'>
+      <properties size='3'>
+        <property name='artifact.size' value='688420'/>
+        <property name='download.size' value='688420'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.0.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='16809'/>
+        <property name='download.size' value='16809'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.5'>
+      <properties size='2'>
+        <property name='artifact.size' value='1790'/>
+        <property name='download.size' value='1790'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.25'>
+      <properties size='2'>
+        <property name='artifact.size' value='1507'/>
+        <property name='download.size' value='1507'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='777418'/>
+        <property name='download.size' value='777418'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.5'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767541'/>
+        <property name='download.size' value='1767541'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.6'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.23'>
+      <properties size='3'>
+        <property name='artifact.size' value='2027310'/>
+        <property name='download.size' value='2027310'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.29'>
+      <properties size='2'>
+        <property name='artifact.size' value='1797'/>
+        <property name='download.size' value='1797'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.0.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='1759204'/>
+        <property name='download.size' value='1759204'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.1.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='17999'/>
+        <property name='download.size' value='17999'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.0.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='16810'/>
+        <property name='download.size' value='16810'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.9'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.27'>
+      <properties size='3'>
+        <property name='artifact.size' value='646273'/>
+        <property name='download.size' value='646273'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='810440'/>
+        <property name='download.size' value='810440'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.8'>
+      <properties size='3'>
+        <property name='artifact.size' value='799838'/>
+        <property name='download.size' value='799838'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764838'/>
+        <property name='download.size' value='1764838'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.6'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767866'/>
+        <property name='download.size' value='1767866'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.19'>
+      <properties size='3'>
+        <property name='artifact.size' value='1961331'/>
+        <property name='download.size' value='1961331'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.6'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.14'>
+      <properties size='2'>
+        <property name='artifact.size' value='695'/>
+        <property name='download.size' value='695'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.9'>
+      <properties size='3'>
+        <property name='artifact.size' value='874224'/>
+        <property name='download.size' value='874224'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.26'>
+      <properties size='2'>
+        <property name='artifact.size' value='1507'/>
+        <property name='download.size' value='1507'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.22'>
+      <properties size='3'>
+        <property name='artifact.size' value='2027310'/>
+        <property name='download.size' value='2027310'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='17985'/>
+        <property name='download.size' value='17985'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.20'>
+      <properties size='2'>
+        <property name='artifact.size' value='1797'/>
+        <property name='download.size' value='1797'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.17'>
+      <properties size='2'>
+        <property name='artifact.size' value='1670'/>
+        <property name='download.size' value='1670'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.1.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='17998'/>
+        <property name='download.size' value='17998'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.3'>
+      <properties size='2'>
+        <property name='artifact.size' value='1789'/>
+        <property name='download.size' value='1789'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.1'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.1.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='1762834'/>
+        <property name='download.size' value='1762834'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.16'>
+      <properties size='3'>
+        <property name='artifact.size' value='1942917'/>
+        <property name='download.size' value='1942917'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.31'>
+      <properties size='3'>
+        <property name='artifact.size' value='694449'/>
+        <property name='download.size' value='694449'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.32'>
+      <properties size='2'>
+        <property name='artifact.size' value='1789'/>
+        <property name='download.size' value='1789'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.9'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764839'/>
+        <property name='download.size' value='1764839'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.1.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='17678'/>
+        <property name='download.size' value='17678'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.2.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='1761936'/>
+        <property name='download.size' value='1761936'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.26'>
+      <properties size='3'>
+        <property name='artifact.size' value='2062872'/>
+        <property name='download.size' value='2062872'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.1.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764542'/>
+        <property name='download.size' value='1764542'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.7'>
+      <properties size='3'>
+        <property name='artifact.size' value='17985'/>
+        <property name='download.size' value='17985'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.28'>
+      <properties size='3'>
+        <property name='artifact.size' value='677585'/>
+        <property name='download.size' value='677585'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='844092'/>
+        <property name='download.size' value='844092'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.5'>
+      <properties size='3'>
+        <property name='artifact.size' value='17991'/>
+        <property name='download.size' value='17991'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.0.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='16810'/>
+        <property name='download.size' value='16810'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.9'>
+      <properties size='2'>
+        <property name='artifact.size' value='1790'/>
+        <property name='download.size' value='1790'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.5'>
+      <properties size='3'>
+        <property name='artifact.size' value='786775'/>
+        <property name='download.size' value='786775'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.2.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='17676'/>
+        <property name='download.size' value='17676'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.6.33'>
+      <properties size='3'>
+        <property name='artifact.size' value='17775'/>
+        <property name='download.size' value='17775'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.7'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='17991'/>
+        <property name='download.size' value='17991'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.6.33'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764679'/>
+        <property name='download.size' value='1764679'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.28'>
+      <properties size='2'>
+        <property name='artifact.size' value='1798'/>
+        <property name='download.size' value='1798'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.7'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764510'/>
+        <property name='download.size' value='1764510'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='814259'/>
+        <property name='download.size' value='814259'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.20'>
+      <properties size='3'>
+        <property name='artifact.size' value='2025848'/>
+        <property name='download.size' value='2025848'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='752736'/>
+        <property name='download.size' value='752736'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.6'>
+      <properties size='3'>
+        <property name='artifact.size' value='1770302'/>
+        <property name='download.size' value='1770302'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.8'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.8'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.8'>
+      <properties size='2'>
+        <property name='artifact.size' value='1807'/>
+        <property name='download.size' value='1807'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.2.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='17773'/>
+        <property name='download.size' value='17773'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='828442'/>
+        <property name='download.size' value='828442'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='17985'/>
+        <property name='download.size' value='17985'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.8.9'>
+      <properties size='3'>
+        <property name='artifact.size' value='17992'/>
+        <property name='download.size' value='17992'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.9'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.1.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='17999'/>
+        <property name='download.size' value='17999'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.5'>
+      <properties size='3'>
+        <property name='artifact.size' value='854912'/>
+        <property name='download.size' value='854912'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.17'>
+      <properties size='3'>
+        <property name='artifact.size' value='1941494'/>
+        <property name='download.size' value='1941494'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='17773'/>
+        <property name='download.size' value='17773'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='1765244'/>
+        <property name='download.size' value='1765244'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.27'>
+      <properties size='2'>
+        <property name='artifact.size' value='1507'/>
+        <property name='download.size' value='1507'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.2.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='1762570'/>
+        <property name='download.size' value='1762570'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.7'>
+      <properties size='3'>
+        <property name='artifact.size' value='857931'/>
+        <property name='download.size' value='857931'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='763936'/>
+        <property name='download.size' value='763936'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.0.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='1760152'/>
+        <property name='download.size' value='1760152'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.33'>
+      <properties size='2'>
+        <property name='artifact.size' value='1789'/>
+        <property name='download.size' value='1789'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.21'>
+      <properties size='3'>
+        <property name='artifact.size' value='2027306'/>
+        <property name='download.size' value='2027306'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.1.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764542'/>
+        <property name='download.size' value='1764542'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.9'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767866'/>
+        <property name='download.size' value='1767866'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.6'>
+      <properties size='3'>
+        <property name='artifact.size' value='800330'/>
+        <property name='download.size' value='800330'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='770967'/>
+        <property name='download.size' value='770967'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.6.18'>
+      <properties size='3'>
+        <property name='artifact.size' value='1956741'/>
+        <property name='download.size' value='1956741'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.5'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767864'/>
+        <property name='download.size' value='1767864'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.2.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='1761308'/>
+        <property name='download.size' value='1761308'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767701'/>
+        <property name='download.size' value='1767701'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764926'/>
+        <property name='download.size' value='1764926'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.1.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764543'/>
+        <property name='download.size' value='1764543'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.6.32'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764953'/>
+        <property name='download.size' value='1764953'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.24'>
+      <properties size='2'>
+        <property name='artifact.size' value='1506'/>
+        <property name='download.size' value='1506'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.1.3'>
+      <properties size='3'>
+        <property name='artifact.size' value='17999'/>
+        <property name='download.size' value='17999'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.2'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.19'>
+      <properties size='2'>
+        <property name='artifact.size' value='1670'/>
+        <property name='download.size' value='1670'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='1765183'/>
+        <property name='download.size' value='1765183'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.4'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.8'>
+      <properties size='3'>
+        <property name='artifact.size' value='1764839'/>
+        <property name='download.size' value='1764839'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='1765182'/>
+        <property name='download.size' value='1765182'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.7'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.8.6'>
+      <properties size='3'>
+        <property name='artifact.size' value='857955'/>
+        <property name='download.size' value='857955'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.4'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767701'/>
+        <property name='download.size' value='1767701'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.5'>
+      <properties size='3'>
+        <property name='artifact.size' value='17984'/>
+        <property name='download.size' value='17984'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.1'>
+      <properties size='2'>
+        <property name='artifact.size' value='1787'/>
+        <property name='download.size' value='1787'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.7'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767866'/>
+        <property name='download.size' value='1767866'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.7'>
+      <properties size='3'>
+        <property name='artifact.size' value='795443'/>
+        <property name='download.size' value='795443'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexASDocGenCommand' version='0.7.1'>
+      <properties size='3'>
+        <property name='artifact.size' value='17774'/>
+        <property name='download.size' value='17774'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.8'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.6.31'>
+      <properties size='2'>
+        <property name='artifact.size' value='1797'/>
+        <property name='download.size' value='1797'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.5'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.8.2'>
+      <properties size='3'>
+        <property name='artifact.size' value='1767701'/>
+        <property name='download.size' value='1767701'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.7.3'>
+      <properties size='2'>
+        <property name='artifact.size' value='1788'/>
+        <property name='download.size' value='1788'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='FlexPrettyPrintCommand' version='0.7.9'>
+      <properties size='3'>
+        <property name='artifact.size' value='810301'/>
+        <property name='download.size' value='810301'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.4'>
+      <properties size='2'>
+        <property name='artifact.size' value='1789'/>
+        <property name='download.size' value='1789'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='FlexPrettyPrintCommandFeature' version='0.8.2'>
+      <properties size='2'>
+        <property name='artifact.size' value='1787'/>
+        <property name='download.size' value='1787'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ActionscriptInfoCollector' version='0.7.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='1765178'/>
+        <property name='download.size' value='1765178'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+  </artifacts>
+</repository>

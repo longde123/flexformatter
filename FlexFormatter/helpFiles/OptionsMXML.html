@@ -1,0 +1,44 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<h1>MXML Options</h1>
+	<h2>Spaces around equals</h2>
+	Set the number of spaces that should be placed on either side of an attribute '='.
+	<h2>Spaces before end of empty tag</h2>
+	Set the number of spaces that should be placed before the end /&gt; of an empty tag.
+	<h2>Keep blank lines</h2>
+	If checked, blank lines between tags and inside tag data are preserved during a format.  Carriage returns within a start or end tag are ignored.  This option should rarely be unchecked.
+	<h2>Blank lines before tags</h2>
+	Use this table to add tags that should have blank lines inserted before each occurrence.  Use the spinner to control the number of blank lines.  Tags not listed won't have any blank lines before them, subject to the "Keep blank lines" setting. 
+	<h2>Indent to first attr</h2>
+	If checked, indent wrapped attributes to line up with the first attribute in the tag.  If not checked, wrapped lines are indented one tab.
+	<h2>Configure attribute order</h2>
+	This button brings up a dialog lets you reorder mxml attributes during a Format.
+	<h2>Default attribute wrap options</h2>
+	<h3>Wrap options</h3>
+	Determine how you want the attributes to be wrapped.
+	<ul>
+	<li>No wrap<br> 
+	Don't add any additional line breaks beyond what's specified in the table.</li>
+	<li>Wrap to max line length<br>
+	Break lines when they get longer than the maximum line length.  This is not applied to the items in the custom ordering table before the last configured newline, unless you have defined an attribute group and have specified to use the 'Default' wrapping for the group.</li>
+	<li>Attrs per line<br>
+	Break lines after the given number of attributes.  This is not applied to the items in the custom ordering table before the last configured newline, unless you have defined an attribute group and have specified to use the 'Default' wrapping for the group.</li>
+	</ul>
+	
+	<h2>Text content within tags</h2>
+	There are two tables here.  Tags listed in neither of these tables will be formatted with the default strategy.  The default
+	strategy is to not modify the text content of a tag if it contains any non-whitespace characters.  This is the normal case 
+	of no text content.
+	<ul>
+	<li>Tags to never format - These are tags whose text content should not have their whitespace modified <bold>at all</bold>.  The default 
+		case here is the <mx:String> tag, where the start and end tag are typically located on the same line, and whitespace is
+		significant.  Add other tags to this list as needed. </li>
+	<li>Tags to always format - These are tags where whitespace is not meaningful in the text content.  This is the case for the mx:List tag (AFAIK), where blank lines and leading and trailing whitespace are ignored.
+		Add other tags to this list as needed.</li>
+	</ul>
+	<h3>Restore defaults to both tables</h3>
+	This button repopulates the two list boxes.  The Restore Defaults button does not affect these lists, although their contents are stored
+	with the formatter preferences, and an Import/Export operation does set/save their contents.
+</head>
+</html>

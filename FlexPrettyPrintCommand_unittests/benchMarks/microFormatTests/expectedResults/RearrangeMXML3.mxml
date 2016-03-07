@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+					 layout="absolute">
+	<fx:Binding/>
+	<!-- a comment -->
+	<fx:Definition/>
+	<m:Library/>
+	<z:Metadata/>
+	<mx:Script>
+		<![CDATA[
+			public function a():Boolean
+			{
+			}
+
+			public function m():Boolean
+			{
+			}
+
+			public function x():Boolean
+			{
+			}
+
+			public function x2():Boolean
+			{
+			}
+
+			public function y():Boolean
+			{
+			}
+
+			public function z():Boolean
+			{
+			}
+		]]>
+	</mx:Script>
+	<j:Style/>
+	<o:Style/>
+
+	<a>
+	</a>
+	<mx:states>
+		<mx:State name="State2">
+		</mx:State>
+	</mx:states>
+</mx:Application>

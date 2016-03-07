@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Flex"
+            id="FlexPrettyPrintCommand.commands.category">
+      </category>
+      <command
+            categoryId="FlexPrettyPrintCommand.commands.category"
+            description="Format Adobe MXML or ActionScript code.  Format the selected lines or the entire document if there is no selection."
+            id="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+            name="Format MXML/ActionScript">
+      </command>
+      <command
+            categoryId="FlexPrettyPrintCommand.commands.category"
+            description="Indent Adobe MXML or ActionScript code.  Indent the selected lines or the current line if there is no selection."
+            id="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+            name="Indent MXML/ActionScript">
+      </command>
+      <command
+            categoryId="FlexPrettyPrintCommand.commands.category"
+            id="FlexASRearrangeCodeCommand.commands.rearrangeFile"
+            name="Flex Rearrange">
+      </command>
+      <command
+            categoryId="FlexPrettyPrintCommand.commands.category"
+            description="Add comments around the currently selected code block to disable formatting of the code by FlexFormatter"
+            id="FlexExcludeFormat.commands.addons.flexbuilder"
+            name="Exclude block from formatting">
+      </command>
+      <command
+            categoryId="FlexPrettyPrintCommand.commands.category"
+            description="Add comment in the current file to disable any formatting of the code by FlexFormatter"
+            id="FlexIgnoreFileFormat.commands.addons.flexbuilder"
+            name="Exclude file from formatting">
+      </command>
+      <command
+            categoryId="FlexPrettyPrintCommand.commands.category"
+            description="Remove unused namespace definitions in mxml files."
+            id="FlexPrettyPrintRemoveUnusedNamespaces.commands.addons.flexbuilder"
+            name="Remove Unused Namespaces">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+            class="flexprettyprint.handlers.FlexPrettyIndentHandler">
+<!--         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.ui.IEditorPart">
+            </instanceof>
+         </enabledWhen>-->
+      </handler>
+      <handler
+            commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+            class="flexprettyprint.handlers.FlexPrettyFormatHandler">
+      </handler>
+      <handler
+            commandId="FlexASRearrangeCodeCommand.commands.rearrangeFile"
+            class="flexasrearrangecodecommand.handlers.ASRearrangeCodeHandler">
+      </handler>
+      <handler
+            class="flexprettyprint.handlers.FlexExcludeBlockHandler"
+            commandId="FlexExcludeFormat.commands.addons.flexbuilder">
+      </handler>
+      <handler
+            class="flexprettyprint.handlers.FlexExcludeFileHandler"
+            commandId="FlexIgnoreFileFormat.commands.addons.flexbuilder">
+      </handler>
+      <handler
+            class="flexprettyprint.handlers.MXMLRemoveNamespacesHandler"
+            commandId="FlexPrettyPrintRemoveUnusedNamespaces.commands.addons.flexbuilder">
+      </handler>
+   </extension>
+<!--   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="FlexPrettyPrintCommand.commands.addons.flexbuilder"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>-->
+   <extension
+         point="org.eclipse.ui.menus">
+<!--      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Sample Menu"
+               mnemonic="M"
+               id="FlexPrettyPrintCommand.menus.sampleMenu">
+            <command
+                  commandId="FlexPrettyPrintCommand.commands.addons.flexbuilder"
+                  mnemonic="S"
+                  id="FlexPrettyPrintCommand.menus.sampleCommand">
+            </command>
+         </menu>
+      </menuContribution>-->
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="FlexPrettyPrintCommand.toolbars.sampleToolbar">
+            <command
+                  commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+                  icon="icons/Format.gif"
+                  tooltip="Format Flex code (selected lines or document)"
+                  id="FlexPrettyPrintFormat.toolbars.sampleCommand">
+            </command>
+            <command
+                  commandId="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+                  icon="icons/Indent.gif"
+                  tooltip="Indent Flex code (selected lines)"
+                  id="FlexPrettyPrintIndent.toolbars.sampleCommand">
+            </command>
+            <command
+                  commandId="FlexASRearrangeCodeCommand.commands.rearrangeFile"
+                  icon="icons/FlexRearranger.gif"
+                  tooltip="Rearrange (reorder) code (whole file, .as or .mxml)"
+                  id="FlexASRearrangeCodeCommand.commands.rearrangeFile.menu">
+            </command>
+            <command
+                  commandId="FlexPrettyPrintRemoveUnusedNamespaces.commands.addons.flexbuilder"
+                  icon="icons/RemovedUnused.gif"
+                  id="FlexPrettyPrintCommand.commands.removeNamespaces.menu"
+                  tooltip="Remove unused namespaces">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="flexprettyprint.preferences.PrefPage"
+            id="FlexPrettyPrintCommand.preferencepage.id"
+            name="FlexFormatter">
+      </page>
+      <page
+            category="FlexPrettyPrintCommand.preferencepage.id"
+            class="flexprettyprint.preferences.AutoFormatPrefPage"
+            id="FlexPrettyPrintCommand.preferencepage.auto.id"
+            name="Auto Format">
+      </page>
+      <page
+            category="FlexPrettyPrintCommand.preferencepage.id"
+            class="flexprettyprint.preferences.UpdateCheckerPage"
+            id="FlexPrettyPrintCommand.preferencepage.update.id"
+            name="Update Checker">
+      </page>
+      
+<!--      <page
+            class="flexprettyprint.preferences.TopPrefPage"
+            id="FlexPrettyPrintCommand.mainPreferencePage.id"
+            name="Flex Formatter">
+      </page>
+      <page
+            category="FlexPrettyPrintCommand.mainPreferencePage.id"
+            class="flexprettyprint.preferences.AutoFormatPrefPage"
+            id="FlexPrettyPrintCommand.preferencepage.autoformatting.id"
+            name="Auto Format">
+      </page>
+      <page
+            category="FlexPrettyPrintCommand.mainPreferencePage.id"
+            class="flexprettyprint.preferences.GeneralSettings"
+            id="FlexPrettyPrintCommand.preferencepage.generalSettings.id"
+            name="Formatter Settings">
+      </page>
+      <page
+            category="FlexPrettyPrintCommand.preferencepage.generalSettings.id"
+            class="flexprettyprint.preferences.ActionScriptFormatSettings"
+            id="FlexPrettyPrintCommand.preferencepage.ActionScriptFormatSettings.id"
+            name="ActionScript Formatting">
+      </page>
+      <page
+            category="FlexPrettyPrintCommand.preferencepage.generalSettings.id"
+            class="flexprettyprint.preferences.ActionScriptRearrangeSettings"
+            id="FlexPrettyPrintCommand.preferencepage.ActionScriptRearrangeSettings.id"
+            name="ActionScript Rearranging">
+      </page>
+      <page
+            category="FlexPrettyPrintCommand.preferencepage.generalSettings.id"
+            class="flexprettyprint.preferences.MXMLFormatSettings"
+            id="FlexPrettyPrintCommand.preferencepage.MXMLFormatSettings.id"
+            name="MXML Formatting">
+      </page>-->
+      
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="flexprettyprint.preferences.Initializer">
+      </initializer>
+      <initializer
+            class="flexasrearrangecodecommand.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+            contextId="com.adobe.flexbuilder.editors.common.flexEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+SHIFT+F">
+      </key>
+      <key
+            commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+            contextId="com.adobe.flexide.editorcore.flexEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+SHIFT+F">
+      </key>
+      <key
+            commandId="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+            contextId="com.adobe.flexbuilder.editors.common.flexEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+I">
+      </key>
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+<!--      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+               label="Format MXML/ActionScript"
+               style="push">
+         </command>
+         <command
+               commandId="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+               label="Indent MXML/ActionScript"
+               style="push">
+         </command>
+      </menuContribution>
+      -->
+      <menuContribution
+            locationURI="popup:#com.adobe.flexbuilder.editors.actionscript.ContextMenuContext?after=additions">
+         <command
+               commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+               label="Format MXML/AS3"
+               style="push">
+         </command>
+         <command
+               commandId="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+               label="Indent MXML/AS3"
+               style="push">
+         </command>
+      </menuContribution>
+ 
+<!--      <menuContribution
+            locationURI="popup:com.adobe.flexbuilder.editors.mxml.MXMLEditor?after=additions">
+         <command
+               commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+               label="Format MXML/ActionScript"
+               style="push">
+         </command>
+         <command
+               commandId="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+               label="Indent MXML/ActionScript"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor?after=additions">
+         <command
+               commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+               label="Format MXML/ActionScript"
+               style="push">
+         </command>
+         <command
+               commandId="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+               label="Indent MXML/ActionScript"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:com.adobe.flexbuilder.editors.actionscript.source?after=additions">
+         <command
+               commandId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+               label="Format MXML/ActionScript"
+               style="push">
+         </command>
+         <command
+               commandId="FlexPrettyPrintIndent.commands.addons.flexbuilder"
+               label="Indent MXML/ActionScript"
+               style="push">
+         </command>
+      </menuContribution>
+      -->
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="flexprettyprintcommand.AddAutoFormatListener">
+      </startup>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="helpContexts.xml">
+      </contexts>
+   </extension>
+   <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="FlexPrettyPrintFormat.FormatFiles"
+            objectClass="org.eclipse.core.resources.IResource">
+         <action
+               class="flexprettyprintcommand.FormatFiles"
+               enablesFor="*"
+               id="FlexPrettyPrintFormat.FormatFiles.action"
+               label="Format .mxml/.as"
+               menubarPath="additions"
+               tooltip="Format this file (or it's recursive children if it's a directory)"/>
+         <action
+               class="flexprettyprintcommand.IndentFiles"
+               enablesFor="*"
+               id="FlexPrettyPrintFormat.IndentFiles.action"
+               label="Indent .mxml/.as"
+               menubarPath="additions"
+               tooltip="Indent this file (or it's recursive children if it's a directory)"/>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="flexprettyprint.preferences.ProjectProperties"
+            id="FlexFormatter.projectProperties"
+            name="FlexFormatter"
+            objectClass="org.eclipse.core.resources.IProject">
+      </page>
+   </extension>
+ <!--  <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="FlexPrettyPrintCommand.viewerContribution1"
+            targetID="#CompilationUnitEditorContext">
+         <action
+               class="flexprettyprint.handlers.menuActions.FormatAction"
+               definitionId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+               id="FlexPrettyPrintCommand.action1"
+               label="Format MXML/ActionScript"
+               menubarPath="edit"
+               style="push">
+         </action>
+      </viewerContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="FlexPrettyPrintCommand.actionSet1"
+            label="ActionScript Formatting"
+            visible="false">
+         <action
+               definitionId="FlexPrettyPrintFormat.commands.addons.flexbuilder"
+               id="FlexPrettyPrintCommand.action1"
+               label="Format MXML/ActionScript"
+               menubarPath="edit"
+               retarget="true"
+               style="push">
+         </action>
+         <menu
+               id="FlexPrettyPrintCommand.menu3"
+               label="&amp;Source"
+               path="Source">
+         </menu>
+      </actionSet>
+   </extension>-->
+
+</plugin>

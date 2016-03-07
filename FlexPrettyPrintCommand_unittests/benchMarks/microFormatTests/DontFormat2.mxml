@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		minWidth="955"
+		minHeight="600"
+		xmlns:charting="yy.xxx.as3.flex.charting.*">
+	<s:layout>
+		<s:VerticalLayout verticalAlign="top"
+				gap="10"/>
+	</s:layout>	<fx:XML><a>text</a></fx:XML><abc/>
+	<fx:XML>
+		<a>			<b>
+			</b>
+		</a>
+	</fx:XML>
+	<NewTag><m></m></NewTag>
+	<charting:myChartElement id="testChart">
+
+	</charting:myChartElement>
+
+</s:Application>

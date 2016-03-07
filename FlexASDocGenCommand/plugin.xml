@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Flex"
+            id="FlexPrettyPrintCommand.commands.category">
+      </category>
+      <command
+            categoryId="FlexPrettyPrintCommand.commands.category"
+            description="Generate ASDoc comments for all elements in file, filtered based on the preference settings."
+            id="FlexASDocGenCommand.commands.ASDoc.file"
+            name="Generate ASDoc for file (based on preferences)">
+      </command>
+      <command
+            categoryId="FlexPrettyPrintCommand.commands.category"
+            description="Generate ASDoc comment stub for the element at the current cursor location.  Will generate a new comment even if one already exists and regardless of the filter settings in the preferences."
+            id="FlexASDocGenCommand.commands.ASDoc.element"
+            name="Generate ASDoc for current element">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="FlexASDocGenCommand.commands.ASDoc.file"
+            class="flexasdocgen.handlers.ASDocGenHandler">
+      </handler>
+      <handler
+            commandId="FlexASDocGenCommand.commands.ASDoc.element"
+            class="flexasdocgen.handlers.ASDocGenElementHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+<!--      <key
+            commandId="FlexASDocGenCommand.commands.ASDoc.file"
+            contextId="com.adobe.flexbuilder.editors.common.flexEditorScope"
+            sequence="ALT+CTRL+A"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>-->
+      <key
+            commandId="FlexASDocGenCommand.commands.ASDoc.element"
+            contextId="com.adobe.flexbuilder.editors.common.flexEditorScope"
+            sequence="ALT+SHIFT+J"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            commandId="FlexASDocGenCommand.commands.ASDoc.element"
+            contextId="com.adobe.flexide.editorcore.flexEditorScope"
+            sequence="ALT+SHIFT+J"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="FlexPrettyPrintCommand.toolbars.sampleToolbar">
+            <command
+                  commandId="FlexASDocGenCommand.commands.ASDoc.file"
+                  icon="icons/ASDocFile.gif"
+                  tooltip="Generate ASDoc comments for file (based on preferences)"
+                  id="FlexASDocGenCommand.toolbars.ASDoc.file">
+            </command>
+            <command
+                  commandId="FlexASDocGenCommand.commands.ASDoc.element"
+                  icon="icons/ASDocFunction.gif"
+                  tooltip="Generate ASDoc comment for current element (Alt+Shift+J)"
+                  id="FlexASDocGenCommand.toolbars.ASDoc.element">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="flexasdocgencommand.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="flexasdocgencommand.preferences.PrefPage"
+            id="flexasdocgencommand.preferences.PreferencePage"
+            name="ASDoc Generation">
+      </page>
+   </extension>
+
+</plugin>

@@ -1,0 +1,29 @@
+<contexts>
+	<context id="FlexFormatter_Formatting_Options">
+		<description>General FlexFormatter information</description>
+		<topic href="helpFiles/OverView.html" label="General FlexFormatter information"/>
+		<topic href="helpFiles/OptionsGeneral.html" label="General FlexFormatter options"/>
+		<topic href="helpFiles/OptionsBlanks.html" label="FlexFormatter Blank/Spaces Options"/>
+		<topic href="helpFiles/OptionsWrapping.html" label="FlexFormatter Wrap/Line Break Options"/>
+		<topic href="helpFiles/OptionsMXML.html" label="FlexFormatter MXML Options"/>
+		<topic href="helpFiles/AttrOrderExamples.html" label="FlexFormatter MXML Attribute Order Customization examples"/>
+	</context>
+	<context id="FlexFormatter_Autosave_Options">
+		<description>FlexFormatter AutoSave options</description>
+		<topic href="helpFiles/OptionsAutosave.html" label="FlexFormatter AutoSave options"/>
+	</context>
+	<context id="FlexFormatter_Update_Options">
+		<description>FlexFormatter Update options</description>
+		<topic href="helpFiles/OptionsUpdate.html" label="FlexFormatter update options"/>
+	</context>
+	<context id="MXML_AttrOrderDlg">
+		<description>FlexFormatter MXML Attribute Order Configuration</description>
+		<topic href="helpFiles/OptionsAttrOrder.html" label="FlexFormatter MXML Attribute Order Configuration"/>
+		<topic href="helpFiles/AttrOrderExamples.html" label="FlexFormatter MXML Attribute Order Customization examples"/>
+	</context>
+	<context id="MXML_GroupEditingDlg">
+		<description>FlexFormatter MXML Attribute Group Editing</description>
+		<topic href="helpFiles/OptionsGroupEditing.html" label="FlexFormatter MXML Attribute Group Editing"/>
+		<topic href="helpFiles/AttrOrderExamples.html" label="FlexFormatter MXML Attribute Order Customization examples"/>
+	</context>
+</contexts>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application creationComplete="init('there is a value to send to the init')"
+					 layout="absolute"
+					 xmlns:mx="http://www.adobe.com/2006/mxml    f">
+	<mx:Button id=""
+				  x="10"
+				  y="90" tat="2" tt="1" ttttttt="5"
+				  other="some other value"
+				  tslkdfjskldfj="3"/>
+</mx:Application>

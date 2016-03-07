@@ -1,0 +1,22 @@
+	<mx:Script>
+<![CDATA[
+	var i:int;
+	name::config
+	{
+		x::debug
+		[Bindable]
+		public function x(i:int):void 
+		{
+			x::debug
+			{var i:int=2;
+			}
+			}
+	}
+	
+	name::debug
+	{
+	public var i:int;
+	}
+	
+		]]>
+	</mx:Script>

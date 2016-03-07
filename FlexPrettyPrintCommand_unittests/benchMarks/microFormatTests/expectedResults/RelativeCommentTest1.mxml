@@ -1,0 +1,15 @@
+<tag>
+	<!--
+			 Plus3
+				plus5
+ minus2
+	 -->
+	<subTag>
+		<mx:Script>
+			/**
+				This is some text that wraps
+					lines and I don't want it disturbed.
+			 */
+		</mx:Script>
+	</subTag>
+</tag>

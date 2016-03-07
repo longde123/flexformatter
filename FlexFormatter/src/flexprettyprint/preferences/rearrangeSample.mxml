@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+    layout="absolute" width="400" height="300">
+    
+  <s:states>
+        <s:State name="State1"/>
+        <s:State name="State2"/>
+    </s:states>
+	<mx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+		]]>
+	</mx:Script>
+    <mx:states>
+        <mx:State name="State2">
+        </mx:State>
+    </mx:states>
+	<fx:Library/>
+	<!--comment about Style1-->
+	<fx:Style name="style1"/>
+	<fx:Style/>
+	<!--comment about Binding-->
+	<fx:Binding/>
+	<fx:Metadata/>
+	<fx:Definition/>    
+    <mx:VBox verticalCenter="0" 
+            horizontalCenter="0"  id="vbox1">
+        <mx:Button label="Small" 
+            click="currentState='State2'" 
+            id="button1"/>      
+    </mx:VBox>
+
+</mx:Application>

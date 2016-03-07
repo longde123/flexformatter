@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+					 layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			
+		]]>
+	</mx:Script>
+	<mx:VBox id="box"
+				width="100%"
+				verticalGap="0"
+				height="100%">
+		<mx:TabBar id="tabBar"
+					  direction="horizontal"
+					  dataProvider="{viewStack}"
+					  width="100%"/>
+
+		<!--comment that covers multiple lines
+		-->
+		<mx:ViewStack id="viewStack"
+						  width="100%"
+						  height="100"
+						  backgroundColor="white"
+						  borderSides="left bottom right"
+						  borderStyle="solid"
+						  borderThickness="1">
+
+			<!--comment before canvas-->
+			<mx:Canvas id="mDashboardTab"
+						  label="Dashboards">
+
+				<!--comment-->
+				<mx:VBox width="100%"
+							height="100%">
+					<mx:ButtonBar id="buttonBar"
+									  dataProvider="{mDashboardButtons}"
+									  height="16"
+									  width="100%"/>
+					<mx:HBox>
+						<mx:Label text="Filter by dashboard:"/>
+						<mx:ComboBox/>
+						<mx:Label text="Rows displayed:"/>
+						<mx:Text/>
+					</mx:HBox>
+					<mx:DataGrid width="100%"
+									 height="100%">
+						<mx:columns>
+							<mx:DataGridColumn headerText="Type"
+													 width="75"/>
+							<mx:DataGridColumn headerText="Indicator"
+													 width="80"/>
+							<mx:DataGridColumn headerText="Alerts"/>
+							<mx:DataGridColumn headerText="Data model"
+													 width="80"/>
+							<mx:DataGridColumn headerText="Display"
+													 width="80"/>
+							<mx:DataGridColumn headerText="Range/Gauge Type"
+													 width="80"/>
+						</mx:columns>
+					</mx:DataGrid>
+				</mx:VBox>
+			</mx:Canvas>
+			<mx:Canvas id="mIndicatorTab"
+						  label="Indicators">
+				<mx:Label text="two"/>
+			</mx:Canvas>
+			<mx:Canvas id="mDataModelsTab"
+						  label="Data Models">
+				<mx:Label text="three"/>
+			</mx:Canvas>
+			<mx:Canvas id="mRangesTab"
+						  label="Ranges">
+				<mx:Label text="four"/>
+			</mx:Canvas>
+		</mx:ViewStack>
+	</mx:VBox>
+	<mx:Array id="mDashboardButtons">
+		<mx:Object label="New Dashboard"/>
+		<mx:Object label="Refresh"/>
+	</mx:Array>
+</mx:Application>

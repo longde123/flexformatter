@@ -1,0 +1,38 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<h1>FlexFormatter update options</h1>
+	<h2>FlexFormatter Updates</h2>
+		There are a few ways to keep the FlexFormatter plug-in code up to date.  
+		<ul>
+			<li>Check for new updates manually - 
+				Visit the SourceForge site (<b>http://sourceforge.net/projects/flexformatter/</b>) and check to see if there is a new version.</li>
+			<li>Click the "Check for Updates" button below - This will check to see if there is a new official release.  Experimental releases will not be returned.</li>
+			<li>Check the "Check for Updates at startup" box - This is just like clicking the button manually, except that it's automatic</li>
+			<li>In Eclipse 3.4, set up to install from the update site (<b>http://flexformatter.googlecode.com/svn/trunk/FlexFormatter/FlexPrettyPrintCommandUpdateSite</b>) and go to 
+				<b>Window->Preferences:Install/Update:Automatic Updates</b> to configure when to check for updates.  Only official (not experimental) releases are released on the update site.</li>
+		</ul>
+			
+	<h2>Settings updates</h2>
+		Groups that want to share formatter settings previously only had the option of having each developer manually import the formatter settings via the preference
+		page.  However, changes in the standard preferences required each developer to perform the manual step again.  Eclipse does not have a standard
+		way of updating workspace-level preferences.  Tearaway_tea suggested the strategy of using a workspace file (under source control) to store the settings, and
+		that is what I've implemented.
+		<h3>Auto sync from file</h3>
+			Check the box to turn on the auto sync option.  In the text field, enter a workspace-relative path to a FlexFormatter properties file.  If you have a project
+			"Settings" with a file "ff.properties" in it, the path would be <b>/Settings/ff.properties</b>.  The file could be in a project that all developers have 
+			open (i.e. your 'main' project), or could be in a separate project created just for this purpose.  The project would be pushed to source control.  Whenever
+			the settings file needs to be modified, the project lead could update the ff.properties file in source control (by whatever method is convenient).  The next time 
+			developers synchronize from source control, they will pull down the updated ff.properties file and the FlexFormatter settings will automatically
+			be updated.  The file does not need to exist when the setting is established, although the absence of a file will generate a message in the Eclipse error log.  
+		<h3>Browse button</h3>
+			The browse button is intended as a way to easily find the path to the common FlexFormatter properties file.  It is a standard Eclipse
+			dialog, but it's a little strange.  You can type in '*' or '?' or a letter in the top text field and all of the matching files
+			in the workspace will be shown.  Select the file and then select which project it is in if the same relative file path exists
+			in multiple projects.
+		<h3>Save to sync file</h3>
+			Mark this checkbox if you are the member of your team who is responsible for actually changing the formatter properties.  If this box
+			is checked, then changes in the Eclipse Preferences will be written to the auto sync file.  Then they
+			will show up as outgoing differences in the team sync perspective.
+</head>
+</html>

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FlexASRearrangeCodeCommand Plug-in
+Bundle-SymbolicName: FlexASRearrangeCodeCommand;singleton:=true
+Bundle-Version: 0.0.1
+Bundle-Activator: flexasrearrangecodecommand.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ ActionscriptInfoCollector,
+ org.eclipse.jface.text
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

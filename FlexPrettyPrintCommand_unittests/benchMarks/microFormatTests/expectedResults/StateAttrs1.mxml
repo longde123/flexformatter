@@ -1,0 +1,19 @@
+<tag>
+	<t1 a.down="1"
+		 a.up="2"
+		 a="3"
+		 b.down=""
+		 b.left=""
+		 b.up=""
+		 c=""
+		 c.down=""
+		 c.up=""
+		 d=""
+		 e.one=""
+		 e.two=""
+		 f.one=""
+		 f.two=""
+		 d.x=""
+		 foo=""/>
+
+</tag>

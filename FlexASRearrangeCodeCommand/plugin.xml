@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Sample Category"
+            id="FlexASRearrangeCodeCommand.commands.category">
+      </category>
+      <command
+            name="Sample Command"
+            categoryId="FlexASRearrangeCodeCommand.commands.category"
+            id="FlexASRearrangeCodeCommand.commands.sampleCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="FlexASRearrangeCodeCommand.commands.sampleCommand"
+            class="flexasrearrangecodecommand.handlers.ASRearrangeCodeHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="FlexASRearrangeCodeCommand.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Sample Menu"
+               mnemonic="M"
+               id="FlexASRearrangeCodeCommand.menus.sampleMenu">
+            <command
+                  commandId="FlexASRearrangeCodeCommand.commands.sampleCommand"
+                  mnemonic="S"
+                  id="FlexASRearrangeCodeCommand.menus.sampleCommand">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="FlexASRearrangeCodeCommand.toolbars.sampleToolbar">
+            <command
+                  commandId="FlexASRearrangeCodeCommand.commands.sampleCommand"
+                  icon="icons/sample.gif"
+                  tooltip="Say hello world"
+                  id="FlexASRearrangeCodeCommand.toolbars.sampleCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="flexasrearrangecodecommand.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="flexasrearrangecodecommand.preferences.RearrangePage"
+            id="flexasrearrangecodecommand.preferences.RearrangePreferencePage"
+            name="ActionScript Rearranging">
+      </page>
+   </extension>
+</plugin>

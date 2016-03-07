@@ -1,0 +1,97 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<h1>Actionscript wrapping and newline settings</h1>
+<h2>Text wrapping/formatting</h2>
+These options control formatting of the wrappable code elements. The goal here was to provide some reasonable wrapping, but also to allow you to skip formatting code elements that are complicated and that it's likely you have your own style for. Allowing you to selectively turn off formatting allows you to select larger parts of the document without worrying that your custom formatting will get destroyed.
+<h3>Array declaration, Method arguments, Method parameters</h3>
+This items are wrapped in a similar way and have the same set of options. Indentation is always affected, regardless of which option is chosen.
+<ul>
+      <li>Don't format<br>
+      Don't add/remove newlines from the existing code item or change the number of spaces internal to a line. i.e. Indent</li>
+
+      <li>Format without changing newlines<br>
+      Don't add or remove line breaks, but adjust spaces on each line</li>
+
+      <li>Keep on single line<br>
+      Format and pull up the item onto a single line, ignoring the max line length setting</li>
+
+      <li>Wrap to max length<br>
+      Use the max line length hint above to decide when to wrap. Breaks on commas. Uses the setting below to decide whether to break before or after a comma.</li>
+
+      <li>Format without removing newlines<br>
+      This is a combination of "Wrap to max length" and "format without changing newlines".  Basically, use the max line length
+      hint to decide when to wrap, but don't remove existing line breaks.
+</ul>
+<h3>General expression</h3>
+This applies to expressions in general (arithmetic, boolean, assignment etc.). The options are the same as above, but line breaks 
+are only added at operators/split points that aren't inside a nested item that corresponds to one of the items above. So if you don't allow wrapping of method parameters, setting the wrap option here won't wrap on 
+commas.  This may not be intuitively obvious, but I expect most people to set the wrap styles the same for all 4.
+<h3>Embedded XML</h3>
+This option applies to XML tags embedded directly in ActionScript code. These tags are not formatted using the options for MXML, 
+both because the semantics are different and it looked difficult. Instead, I added options to try to not screw up formatting that 
+you have already supplied. There is an extra option that will put each tag on a separate line with a reasonable indent.
+<h3>Max line length</h3>
+The max line length is a hint at where you want wrapping to occur for the wrappable elements.  Wrapping occurs after the boundary has been passed, so this is not appropriate for ensuring print output.
+If you turn on advanced wrapping, then breaks will occur before the boundary.  Max line length is only used for items using 1 of 2 wrapping styles: 
+wrap to max length and wrap without removing newlines.
+<h3>Break lines before comma/operator</h3>
+Add carriage returns before commas/operators, or afterward if not checked.
+<h3>Indent to first item</h3>
+If checked, indent 2nd and subsequent lines to the first parameter/argument/array item. This does not affect general expression 
+wrapping. Method calls with method calls as arguments are wrapped in nested fashion. If not checked, all wrapping is indented 
+the number of indents beyond the start of the first line of the wrapped item as specified in the 'hanging indent' spinner.
+<h3>Hanging indent tab stops</h3>
+This spinner specifies the number of tab's worth of spaces to indent when a line is wrapped.
+<h3>Use Advanced wrapping</h3>
+This check box turns on the new wrapping code.  I expect to remove the old wrapping algorithm if the new wrapping code works okay.
+<h4>Operator table</h4>
+This table contains the available split-points int the code available for wrapping.  Yes, there are more points in the code where wrapping
+would be syntactically legal, but most would be pretty strange.  Check the items that you want available for breaking lines.
+<ul>
+<li>assignment - an assignment '=' 
+<li>extends/implements - the keyword in the class/interface declaration.  The break is always before the keyword, regardless of the setting above.
+<li>ternary ops - This is the ?: operator.  If chosen, then the line can split at ? or : or both.
+<li>arithmetic ops - This is +,-,% etc.
+<li>member access - This is the '.' when accessing a field or calling a method.
+<li>logical ops - This is the boolean AND/OR
+<li>other connectors - This is a hodgepodge of other items, like the '::' when accessing xml attributes.
+<li>commas - This applies to function arguments, function parameters, variable lists, etc.
+</ul>
+<h4>Grace columns</h4>
+This is the number of columns beyond the max line length that are available for 'clean' wrapping.  If the additional columns still don't all for a wrap, then other settings come into play to determine where wrapping will occur (if at all).
+<h4>Break on phrase boundaries</h4>
+Checking this item breaks based on operator precedence, with the outermost scope being more breakable than inner scopes.  The line to be broken is searched for split-points based on the items that are checked in the operator table.  Multiple passes
+are made depending on how deeply nested the expressions are.  On each pass, the grace columns are accounted for if a break would be allowed.  As an example, if you had the following line:
+<br>var x:Boolean=(long expression)&&(long expression)<br>
+If assignment is a legal breaking place, then that will be used first, pushing the rest of the expression to the next line.  If the next line is still too long, then it would break on the && (assuming logical operators are a legal split point.).
+If this item is not checked, then any item checked in the table is used, attempting to maximize line length while conforming to the max line length setting.
+If no wrapping point is found within the max line length, then the search continues beyond max line length looking for the first available break point.
+This potentially means that no wrap point will be found, and the line will extend beyond the max line length setting.
+<h4>Enforce max length</h4>
+If this option is checked, then a failure to find a 'clean' max line length based on the settings is followed by another attempt, this time
+using all items in the operator table.  This is not quite the same as selecting all the items in the operator table. 
+
+<h2>Brace style</h2>
+This option controls whether braces are on the same line (Sun style) or the next line (Adobe style) as their associated control
+statements.  If the box is unchecked, then the sub-settings are used.
+<h3>Open brace on new line</h3>
+If checked, open braces will be placed on the line below their control statement. If not, they will be left on the line of the control statement.
+<h4>Open brace on new line subsettings</h4>
+There is also a subsettings checkbox at this level.  If the box is checked, then all open braces follow the setting specified.  If unchecked, then
+the settings can be modified separately for various contexts.
+<h3>Else on new line</h3>
+If checked, else will be placed on a new line after the if statement. Typically, you set "Open brace on new line" and this option to the same checked state.
+<h3>Else-if on same line</h2>
+If checked, keep the 'if' in an 'else if' on the same line with the else. Otherwise, move the if to a new line.
+<h3>Catch/Finally on new line</h3>
+This is the same idea as 'Else on new line'
+
+<h2>Newline after [Bindable]</h2>
+If checked, a line break will be added after [Bindable].  If not, then the meta tag will appear on the same line
+as the associated item, with a space between them.  Bindable is the only tag treated this way.  Other metatags
+will never appear on the same line with the associated item.
+<h2>Put empty statements on new line</h2>
+If checked, then a ';' that doesn't appear to belong with a statement will be placed on a separate line.  This is typically useful for identifying unintentionally empty loops.  	
+</head>
+</html>

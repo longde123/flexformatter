@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application id="me" x="10"
+					 layout="absolute"
+					 xmlns:mx="http://www.adobe.com/2006/mxml    f"
+					 creationComplete="init('there is a value to send to the init')" blah="sdf">
+	<mx:VBox id="you"
+				height="100%"
+				width="100%">
+		<mx:Button id="sendMainAppEventButton"
+					  a="2"
+					  click="sendMainAppEvent(new Event('MAIN_APP_CLICK'))"
+					  enabled="false"
+					  label="Send Main App Event"
+					  blah="blahTag"/>
+		<mx:TextArea id="textArea"
+						 height="100%"
+						 width="100%"/>
+		<mx:LongTag text="fffffffffffffffffffffffffffffffffffffffff"/>
+		<mx:HBox height="100%"
+					width="100%">
+			<mx:SWFLoader id="appLoader1"
+							  height="100%"
+							  width="100%"/>
+			<mx:SWFLoader id="appLoader2"
+							  height="100%"
+							  width="100%"/>
+		</mx:HBox>
+	</mx:VBox>
+</mx:Application>

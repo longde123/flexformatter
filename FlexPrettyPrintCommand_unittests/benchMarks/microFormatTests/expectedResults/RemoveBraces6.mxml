@@ -1,0 +1,9 @@
+<mx:Script>
+      <![CDATA[
+         public function x(i:int):void
+         {
+            if (x)
+               y--;
+         }
+      ]]>
+</mx:Script>

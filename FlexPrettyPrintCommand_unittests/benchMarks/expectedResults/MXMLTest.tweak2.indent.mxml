@@ -1,0 +1,45 @@
+<?xml version="1.0"   encoding="utf-8"?>
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"  layout= "absolute">
+  <mx:List>
+		Item 1
+		
+		Item 2
+		
+		Item 3
+		
+	</mx:List>
+  <mx:String> abc 
+ </mx:String>
+  <mx:Number>42</mx:Number>
+
+  <mx:Script>
+    <![CDATA[
+      import mx.events.CloseEvent;
+      import mx.managers.PopUpManager;
+      import mx.containers.TitleWindow;
+      import mx.core.IFlexDisplayObject;
+      private var window:IFlexDisplayObject; 
+      private function makeDialog(event:Event):void
+      {
+        if (x>2 && y>=3 && (funcCall(x) | 3))
+        {
+          window=PopUpManager.createPopUp(this, MyDlg2, false);
+          TitleWindow(window).showCloseButton=true;
+          TitleWindow(window).addEventListener(CloseEvent.CLOSE, onClosePopup);
+          PopUpManager.centerPopUp(window);
+        }
+      }
+
+      private function onClosePopup(event:Event):void
+      {
+        PopUpManager.removePopUp(window);
+      }
+    ]]>
+  </mx:Script>
+  <mx:Button id="myButton" 
+    x="100" y="100" 
+    width="100%" height="100%" 
+    label="Dlg" click  =  "{makeDialog(event);}"/>
+
+</mx:Application>

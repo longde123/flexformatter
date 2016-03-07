@@ -1,0 +1,61 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<h1>Editing attribute groups</h1>
+	There are 4 predefined groups (properties, styles, effects, and events).  You can modify these groups to contain items
+	I have missed, or create your own groups.  An attribute may be listed in more than one group.
+	<h2>Group table</h2>
+	This table lists the currently defined groups.
+	<h3>New...</h3>
+	This button allows you to define a new group.  Groups must have unique names.
+	<h3>Delete</h3>
+	This button allows you to delete a group.  A group that is used in your custom attribute order cannot be deleted.
+	<h3>Rename...</h3>
+	This button allow you to rename a group.  A group that is used in your custom attribute order cannot be renamed.
+	<h2>Update default groups</h2>
+	This button adds attributes to the end of existing groups based on the default group definitions in the FlexFormatter plugin.
+	The idea is that if more attributes are added to the default groups, this is a way to update them.  No attributes or groups
+	are deleted.  The normal restore defaults behavior on the main preference page <b>does not</b> affect the group definitions.
+	<h2>Editing a group</h2>
+	To edit a group, select it in the group table.  This will cause the attributes table to be populated with the list of 
+	attributes in the group.
+	<h3>Attribute table operations</h3>
+	<ul>
+	<li>Move up<br>Move the attribute up one slot in the list</li>
+	<li>Move to top<br>Move the attribute to the first slot in the list</li>
+	<li>Move down<br>Move the attribute down one slot in the list</li>
+	<li>Delete<br>Remove the attribute from the list</li>
+	<li>Add<br>Type in the text field and click this button to add a new attribute to the list</li>
+	<li>Replace<br>Select an attribute in the list, modify it, and click this button to change the name in the list</li>
+	</ul>
+	<h3>Legal attribute names</h3>
+	Any legal attribute name may be typed here.  Also, you can use Java regular expressions to define attributes.  
+	See <a href="http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html">this link</a>  A simple example is <b>xmlns:.*</b> to match
+	all attributes starting with "xmlns".
+	<h3>Sorting/Wrapping</h3>
+	A group by definition can contain multiple members.  So it makes sense to be able to control sorting and wrapping 
+	within items matched by the group.  Each group has its own setting.  
+	<h4>Sorting</h4>
+	<ul>
+		<li>Leave attributes in existing order<br>
+			Attributes that are identified as part of the group keep the order they had prior to formatting, except that they are now all adjacent in the output.</li>
+		<li>Sort attributes in ascending order<br>
+			Attributes that are identified as part of the group are sorted and adjacent in the output.</li>
+		<li>Sort attributes in group order<br>
+			Attributes that are identified as part of the group are sorted according to the order in the group.  
+			For example, you might alter the default group 'properties' to have id, x, y, width, and height at the top.
+			Those attributes would appear in that order in the output</li>
+	</ul>
+	<h4>Wrapping</h4>
+	<ul>
+		<li>Keep attributes on same line<br>Don't add any line breaks, no matter how many attributes are in this group.  This
+			makes sense if you always keep a tag on a single line, or if the group has a small number of attributes.</li>
+		<li>Wrap attributes based on max line length<br>Wrap based on the max line length hint from the main MXML preference
+			page.</li>
+		<li>Keep n attributes per line<br>Wrap every n attributes. <br>Check the "use defaults" box to use the setting on the main MXML preference page.  Otherwise uncheck and specify an attr count that will be used only for this group.</li>
+		
+		<li>Use default wrapping scheme<br>Use the wrapping scheme on the main MXML preference page as the wrapping scheme
+			for this group.  This option usually makes the most sense.</li>
+	</ul>
+</head>
+</html>

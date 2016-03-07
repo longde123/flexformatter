@@ -1,0 +1,28 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<h1>FlexFormatter AutoFormat</h1>
+	The FlexFormatter allows you to cause a Format or Indent operation to occur when an editor is saved.  Operation for ActionScript and 
+	MXML files can be controlled separately.  Check the appropriate box and decide whether you want Format or Indent to occur.
+	Operations of either kind can be performed manually as needed.
+	<h1>Excluding files from AutoFormat</h1>
+	You can exclude files from auto (or batch) formatting by adding a regular expression to match 
+	the workspace-relative path in the table on the preference page. For example, to exclude items in package 
+	<b>com.mycompany.adobePatches</b>, you could add <b>.*/com/mycompany/adobePatches/.*</b> to the table. Note that you are 
+	filtering based on a path (not a package), and that I canonicalize the paths to use forward slashes for 
+	convenience, regardless of Operation System. <br>
+	The rules are:
+	<ul>
+	<li>Use a forward slash '/' as the path separator, regardless of operating system</li>
+	<li>Use Java regular expression syntax to specify the mask.  See http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html</li>
+	</ul>
+	<h2>Examples</h2>
+	<h3>all paths containing a package segment of "adobe"</h3>
+	.*/adobe/.*
+	<h3>Actionscript files that come from a third party with "org" package (notice the escaped period before the file extension)</h3>
+	.*/src/org/.*\.as
+	
+	<h1>Formatting other file extensions as xml</h1>
+	You can also use the formatter as a helper for formatting xml-style files. In the extensions table, add other extension (ex. 'xml') that should be formatted/indented using the mxml pretty printer. <b>CData</b> sections are not formatted.   
+</head>
+</html>

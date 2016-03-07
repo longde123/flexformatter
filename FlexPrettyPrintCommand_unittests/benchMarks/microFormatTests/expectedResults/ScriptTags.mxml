@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<mx:Application creationComplete = "init('there is a value to send to the init')" layout = "absolute" xmlns:mx = "http://www.adobe.com/2006/mxml    f">
+
+	<mx:Image>
+
+		<mx:notARealEvent>
+			<![CDATA[
+	//comment location
+			var i:int=2;var z:boolean=false;
+			]]>
+		</mx:notARealEvent>
+
+		<mx:notARealEvent>
+	//comment location
+			var i:int=2;var z:boolean=false;
+		</mx:notARealEvent>
+
+		<mx:mouseDown>
+			//comment location
+			var i:int = 2;
+			var z:boolean = false;
+		</mx:mouseDown>
+
+		<mx:mouseDown>
+			<![CDATA[
+				//comment location
+				var i:int = 2;
+				var z:boolean = false;
+			]]>
+		</mx:mouseDown>
+	</mx:Image>
+
+	<mx:Script>
+		//comment location
+		var i:int = 2;
+		var z:boolean = false;
+	</mx:Script>
+
+	<mx:Script>
+		<![CDATA[
+			//comment location
+			var i:int = 2;
+			var z:boolean = false;
+		]]>
+	</mx:Script>
+
+	<mx:Button other = "some other value" x = "10" y = "90" id = "" />
+</mx:Application>

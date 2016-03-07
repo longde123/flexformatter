@@ -1,0 +1,32 @@
+<?xml  version="1.0" encoding="utf-8" ?>
+<!--an XML comment-->
+<mx:Application xmlns:mx = "http://www.adobe.com/2006/mxml" layout = "absolute">
+    <mx:List id = "MyList" width = "293" height = "180" x = "87.5" y = "72">
+        item 1
+        item 2
+        item 3
+    </mx:List>
+
+    <mx:Button x = "87.5" y = "22" label = "A Button"/>
+
+    <mx:Script>
+<![CDATA[
+import com.none.*;
+   namespace my_namespace;
+
+/* function that returns an int */
+   my_namespace private function performSelect(z:com.temp.MyType, r:boolean, arg3: boolean, arg4: boolean
+   , arg5:boolean):int
+   
+   {
+   	
+  var j:int = ((342/(65-40)));[Embed(asset="..\\x\\y\\z.jpg")]
+  
+ [Bindable] var blah:ArrayCollection = new ArrayCollection([{topping:"Pepperoni", calories: 400},
+ {topping:"Sausage", calories: 550},{topping:"Ham", calories: 240},{topping:"Chicken", calories: 110},{topping:"Ground Beef", calories: 375},{topping:"Bacon", calories: 330},{topping:"Canadian Bacon", calories: 100},{topping:"Mushrooms", calories: 40},{topping:"Onions", calories: 40},{topping:"Peppers", calories: 0},{topping:"Extra Cheese", calories: 300},{topping:"Olives", calories: 60},{topping:"Anchovies", calories: 80},{topping:"Pineapples", calories:0}]);  
+}
+        ]]>
+    </mx:Script>
+
+<mx:Button id="aButton" width="40" height="20" x="600" y="300" label="Click me"/>
+</mx:Application>
